@@ -1,0 +1,2 @@
+1 - Uygulamayı doğrudan çalıştırmak için Exe içindeki dosyayı çalıştırınız
+2 - Uygulama yapısı için, "munferit_sayfa", "tum_sayfalar","cosim_combin" dosyalarına bakabilirsiniz

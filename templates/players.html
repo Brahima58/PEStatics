@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <title>Player Result</title>
+    <style>
+        body {
+            background-color: rgb(33, 37, 41); 
+             }
+        .h1 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 200%;
+            color: rgb(13, 202, 240);
+        }
+        .p2 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 100%;
+            color: rgb(13, 202, 240);
+        }
+        .p3 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 200%;
+            color: white;
+        }
+        .h2 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 150%;
+            justify-content: flex-start;
+            color: rgb(13, 202, 240);
+        }
+        @font-face {
+            font-family: 'yazi';
+            src: url('../fonts/eFootballSans-Regular.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'numara';
+            src: url('../fonts/eFootballStencil-Regular.ttf') format('truetype');
+        }
+        .yazi {
+            font-family: 'yazi' !important; 
+        }
+
+        .numara {
+            font-family: 'numara'; 
+        }        
+    </style>
+</head>
+<body>
+    <h class="h2 numara">PEStatics</h>
+    {% if Players %}  
+    <table class="table table-dark table-hover">
+        <tr>
+            <th class="yazi"> Name</th>
+            <th class="yazi">Overall Rating</th>
+            <th class="yazi">Position</th>
+            <th class="yazi">Package</th>
+        </tr>
+        {% for player in Players %}
+        <tr>
+            <td><a href="/player/{{ player.PlayerID }}" style="text-decoration: none;">  <!-- Oyuncuların İsmini göster ama basınca oyuncunun ID'sine gitsin (Bunu aynı oyuncunun birden fazla versiyonu olduğu için yapıyoruz) -->
+                <p class="p2 yazi">{{ player.PlayerName }}</p>
+                
+            </a></td>
+            <th class="yazi">{{ player.OverallRating }}</td>
+                <th class="yazi">{{ player.Position }}</td>
+            <td>
+                <a href="{{ url_for('packages', package=player.Package) }}" style="text-decoration: none;">
+                    <p class="p2 numara">{{ player.Package }}</p>
+                </a>
+            </td>
+
+        </tr>
+        
+        {% endfor %}
+    </table>
+    {% else %}
+    <p class="p3 yazi">Player Not Found</p>
+    {% endif %}
+    <a href="/">
+        <type="button" class="btn btn-outline-info yazi">New Player Search</button>
+    </a>
+</body>
+</html>
