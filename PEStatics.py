@@ -8,23 +8,22 @@ app = Flask(__name__)
 
 
 #Global değişkenler
-conn = None
+conn = None 
 cursor = None
 
-# Uygulama başlatıldığında bir kez bağlantı kur
-def init_db():
+@app.before_request #Ön bağlantı kur
+def before_request():
     global conn, cursor
-    conn = pyodbc.connect(
-        'DRIVER={ODBC Driver 17 for SQL Server};'
-        'SERVER=127.0.0.1,57181;'
-        'DATABASE=OyuncuDB;'
-        'UID=Brahima58;'
-        'PWD=jhvc/327u_S;'
-        'timeout=30;'
-    )
-    cursor = conn.cursor()
-
-init_db()
+    if conn is None:
+        conn = pyodbc.connect(
+            'DRIVER={ODBC Driver 17 for SQL Server};'
+            'SERVER=127.0.0.1,57181;'
+            'DATABASE=OyuncuDB;'
+            'UID=Brahima58;'
+            'PWD=jhvc/327u_S;'
+            'timeout=30;'
+        )
+        cursor = conn.cursor()
 
 @app.route('/') #Bilgi sayfası
 def home():
