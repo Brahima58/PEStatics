@@ -1,4 +1,5 @@
 import pyodbc
+import os
 import random
 import math
 from unidecode import unidecode
@@ -330,5 +331,6 @@ def players_detail(player_id):
                            a_cosinesim_class=a_cosinesim_class,benzer_oyuncular=benzer_oyuncular) #html'de görüntülenecek veriler
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
 
