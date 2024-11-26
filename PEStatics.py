@@ -17,7 +17,7 @@ def before_request():
     if conn is None:
         conn = pyodbc.connect(
             'DRIVER={ODBC Driver 17 for SQL Server};'
-            'SERVER=DESKTOP-9SRF0UM\SQLEXPRESS;'
+            'SERVER=DESKTOP-9SRF0UM\\SQLEXPRESS;'
             'DATABASE=OyuncuDB;'
             'UID=Brahima58;'
             'PWD=jhvc/327u_S;'
@@ -336,4 +336,7 @@ def players_detail(player_id):
                            sonuclar=sonuclar,info_data=info_data, weak_foot_accuracy_class=weak_foot_accuracy_class,
                            combine_data=combine_data,sonuclar1=sonuclar1,cosine_data=cosine_data,cosine_value=cosine_value,
                            a_cosinesim_class=a_cosinesim_class,benzer_oyuncular=benzer_oyuncular) #html'de görüntülenecek veriler
+
+if __name__ == '__main__':
+    app.run(host="0.0.0.0", port=5000)
 
