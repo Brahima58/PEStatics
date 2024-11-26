@@ -21,6 +21,7 @@ def before_request():
             'DATABASE=OyuncuDB;'
             'UID=Brahima58;'
             'PWD=jhvc/327u_S;'
+            'timeout=30;'
         )
         cursor = conn.cursor()
 
