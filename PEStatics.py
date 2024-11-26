@@ -1,7 +1,6 @@
 import pyodbc
 import random
 import math
-import webbrowser 
 from unidecode import unidecode
 from flask import Flask, render_template, request
 
@@ -18,9 +17,10 @@ def before_request():
     if conn is None:
         conn = pyodbc.connect(
             'DRIVER={ODBC Driver 17 for SQL Server};'
-            'SERVER=server_adi;'
-            'DATABASE=db_adi;'
-            'Trusted_Connection=yes;'
+            'SERVER=DESKTOP-9SRF0UM\SQLEXPRESS;'
+            'DATABASE=OyuncuDB;'
+            'UID=Brahima58;'
+            'PWD=jhvc/327u_S;'
         )
         cursor = conn.cursor()
 
@@ -72,7 +72,7 @@ def position_calculate(player_data, player_position): #parametreleri döngü dı
         puanlar = {} #puanları sözlükte tut
 
         for i in range(n + 1):  
-            yeni_deger = min_val + (i * stdev) #standart sapma değişimine göre dinamik sayıda dizi oluştur, bu verilerin düzgün yayılmadığı verilerde düzgün sonuç almamıza yarar
+            yeni_deger = min_val + (i * stdev)
 
             if yeni_deger < average - 2 * stdev:
                 puan = "cokkotu"
@@ -337,8 +337,5 @@ def players_detail(player_id):
                            combine_data=combine_data,sonuclar1=sonuclar1,cosine_data=cosine_data,cosine_value=cosine_value,
                            a_cosinesim_class=a_cosinesim_class,benzer_oyuncular=benzer_oyuncular) #html'de görüntülenecek veriler
 
-if __name__ == '__main__': #Exe haline çevirdiğimizden, exe çalıştığında doğrudan browser açılması için
-
-    url = "http://127.0.0.1:5000/"
-    webbrowser.open(url)
-    app.run()
+if __name__ == '__main__':
+    app.run(debug=True)
