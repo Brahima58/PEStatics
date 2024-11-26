@@ -337,5 +337,3 @@ def players_detail(player_id):
                            combine_data=combine_data,sonuclar1=sonuclar1,cosine_data=cosine_data,cosine_value=cosine_value,
                            a_cosinesim_class=a_cosinesim_class,benzer_oyuncular=benzer_oyuncular) #html'de görüntülenecek veriler
 
-if __name__ == '__main__':
-    app.run(debug=True)
