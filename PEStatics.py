@@ -18,10 +18,10 @@ def before_request():
     if conn is None:
         conn = pyodbc.connect(
             'DRIVER={ODBC Driver 17 for SQL Server};'
-            'SERVER=127.0.0.1,57181;'
-            'DATABASE=OyuncuDB;'
-            'UID=Brahima58;'
-            'PWD=jhvc/327u_S;'
+            'SERVER=serveradi;'
+            'DATABASE=dbadi;'
+            'UID=kullanıcıadi;'
+            'PWD=sifre;'
             'timeout=30;'
         )
         cursor = conn.cursor()
