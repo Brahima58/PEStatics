@@ -19,7 +19,7 @@ def before_request():
             dbname="PEStatics", 
             user="postgres", 
             password="jhvc/327u_S", 
-            host="localhost", 
+            host="db", 
             port="5432"
         )
         cursor = conn.cursor(cursor_factory=DictCursor)
