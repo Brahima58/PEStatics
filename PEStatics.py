@@ -11,7 +11,7 @@ app = Flask(__name__)
 #Global değişkenler
 conn = None 
 cursor = None
-DB_HOST = os.getenv("DB_HOST", "db")  
+DB_HOST = os.getenv("DB_HOST", "frankfurt-postgres.render.com")  
 DB_PORT = os.getenv("DB_PORT", "5432")
 DB_NAME = os.getenv("DB_NAME", "PEStatics")
 DB_USER = os.getenv("DB_USER", "postgres")
@@ -22,12 +22,12 @@ def before_request():
     global conn, cursor
     if conn is None:
         conn = psycopg2.connect(
-            dbname=DB_NAME,
-            user=DB_USER,
-            password=DB_PASSWORD,
-            host=DB_HOST,
-            port=DB_PORT
-        )
+                dbname=DB_NAME,
+                user=DB_USER,
+                password=DB_PASSWORD,
+                host=DB_HOST,
+                port=DB_PORT
+    )
         cursor = conn.cursor(cursor_factory=DictCursor)
 
 
