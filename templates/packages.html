@@ -62,11 +62,11 @@
         </tr>
         {% for player in players %}
         <tr>
-            <td><a href="/player/{{ player.PlayerID }}" style="text-decoration: none;">
-                <p class="p2 yazi">{{ player.PlayerName }}</p>
+            <td><a href="/player/{{ player.playerid }}" style="text-decoration: none;">
+                <p class="p2 yazi">{{ player.playername }}</p>
             </a></td>
-            <td><p class="yazi">{{ player.OverallRating }}</p></td>
-            <td><p class="yazi"> {{player.Position }}</p></td>
+            <td><p class="yazi">{{ player.overallrating }}</p></td>
+            <td><p class="yazi"> {{player.position }}</p></td>
         </tr>
         {% endfor %}
     </table>

@@ -1,7 +1,6 @@
-import pyodbc
-import os
 import random
-import math
+import psycopg2 
+from psycopg2.extras import DictCursor
 from unidecode import unidecode
 from flask import Flask, render_template, request
 
@@ -16,15 +15,15 @@ cursor = None
 def before_request():
     global conn, cursor
     if conn is None:
-        conn = pyodbc.connect(
-            'DRIVER={ODBC Driver 17 for SQL Server};'
-            'SERVER=127.0.0.1,57181;'
-            'DATABASE=OyuncuDB;'
-            'UID=Brahima58;'
-            'PWD=jhvc/327u_S;'
-            'timeout=30;'
+        conn = psycopg2.connect(
+            dbname="PEStatics", 
+            user="postgres", 
+            password="jhvc/327u_S", 
+            host="localhost", 
+            port="5432"
         )
-        cursor = conn.cursor()
+        cursor = conn.cursor(cursor_factory=DictCursor)
+
 
 @app.route('/') #Bilgi sayfası
 def home():
@@ -32,28 +31,31 @@ def home():
 
 def position_calculate(player_data, player_position): #parametreleri döngü dışından al
     global cursor
-
-    columns = ['OverallRating', 'OffensiveAwareness', 'BallControl', 'Dribbling', 
-               'TightPossession', 'LowPass', 'LoftedPass', 'Finishing', 'Header', 
-               'SetPieceTaking', 'Curve', 'DefensiveAwareness', 'Tackling', 
-               'Aggression', 'DefensiveEngagement', 'GKAwareness', 'GKCatch', 
-               'GKClearance', 'GKReflexes', 'GKReach', 'Speed', 'Acceleration', 
-               'KickingPower', 'Jumping', 'PhysicalContact', 'Balance', 'Stamina','Height']
-    player_data_dict = {column: getattr(player_data, column, None) for column in columns} #Her bir columndaki veriyi player_data sözlüğünde tut
+    columns = ['overallrating', 'offensiveawareness', 'ballcontrol', 'dribbling', 
+               'tightpossession', 'lowpass', 'loftedpass', 'finishing', 'header', 
+               'setpiecetaking', 'curve', 'defensiveawareness', 'tackling', 
+               'aggression', 'defensiveengagement', 'gkawareness', 'gkcatch', 
+               'gkclearance', 'gkreflexes', 'gkreach', 'speed', 'acceleration', 
+               'kickingpower', 'jumping', 'physicalcontact', 'balance', 'stamina','height']
+    print("Player Data:", player_data)
+    player_data_dict = {column: player_data.get(column, None) for column in columns} #Her bir columndaki veriyi player_data sözlüğünde tut
+    print("Player Data Dict:", player_data_dict)
     sonuclar = {} #dereceleri bu sözlükte tut
 
     for column in columns: #her bir sütundaki verilerin sapmasını al
-        cursor.execute(f"""
+        cursor.execute (f"""
             SELECT 
                 AVG({column}) AS average,
-                STDEV({column}) AS stdev,
+                STDDEV({column}) AS stdev,
                 MIN({column}) AS min,
                 MAX({column}) AS max
-            FROM Players
-            WHERE Position = ?;
-        """, player_position)
+            FROM players
+            WHERE position = %s;
+        """, (player_position,))
 
         sonuc = cursor.fetchone() #her bir column için işlem yap
+        print(f"Query Result for {column}: {sonuc}")
+        
         average, stdev, min_val, max_val = sonuc #verileri bu isimlerde tut
 
         if None in (average, stdev, min_val, max_val) or stdev <= 0: #aykırı değerde ortalama döndür
@@ -82,6 +84,7 @@ def position_calculate(player_data, player_position): #parametreleri döngü dı
 
             puanlar[yeni_deger] = puan #hesaplanan yeni değeri puanlar içine al
         mevcut_deger = player_data_dict[column] #her bir columnu mevcut_deger içine al
+        
        
         mevcut_puan = None
         for key, value in puanlar.items(): #uygun puan bulana kadar kıyasla
@@ -111,14 +114,15 @@ def cosinesim_class(player_data, player_position, cosine_value): #benzerlik skor
     global cursor 
     
     column = 'CosineSimilarity'
-    player_data_dict = {'CosineSimilarity': getattr(player_data, 'CosineSimilarity', None)} #sözlükte tut
+    player_data_dict = {'CosineSimilarity': player_data.get('CosineSimilarity', None)}
+
 
     cursor.execute(f"""
         SELECT 
             MIN({column}) AS min,
             MAX({column}) AS max
         FROM Players
-        WHERE Position = ?;
+        WHERE Position = %s;
     """, (player_position,))
     
     sonuc = cursor.fetchone()
@@ -145,21 +149,21 @@ def cosinesim_class(player_data, player_position, cosine_value): #benzerlik skor
 def combined_abilities(player_data):
     global cursor
 
-    columns = ['Precision', 'LongRangeShooting', 'Diligence', 'DribbleSpeed', 
-                'Agility', 'Vision','Obstinacy', 'GoalKeeping']
-    player_data_dict = {column: getattr(player_data, column, None) for column in columns} #Her bir columndaki veriyi player_data sözlüğünde tut
+    columns = ['precision', 'longrangeshooting', 'diligence', 'dribblespeed', 
+                'agility', 'vision','obstinacy', 'goalkeeping']
+    player_data_dict = {column: player_data.get(column, None) for column in columns}  #Her bir columndaki veriyi player_data sözlüğünde tut
     sonuclar1 = {} 
 
-    player_position = player_data.Position
+    player_position = player_data["position"]
     for column in columns: #her bir sütundaki verilerin sapmasını al
         cursor.execute(f"""
             SELECT 
                 AVG({column}) AS average,
-                STDEV({column}) AS stdev,
+                STDDEV({column}) AS stdev,
                 MIN({column}) AS min,
                 MAX({column}) AS max
-            FROM Players
-            WHERE Position = ?;
+            FROM players
+            WHERE position = %s;
         """, (player_position,))
 
         sonuc = cursor.fetchone() #her bir column için işlem yap
@@ -208,7 +212,7 @@ def combined_abilities(player_data):
 def packages(package):
     global cursor
 
-    cursor.execute("SELECT * FROM Players WHERE Package = ? ORDER BY PlayerName", package)  
+    cursor.execute("SELECT * FROM players WHERE package = %s ORDER BY playername", (package,))  
     player_data = cursor.fetchall()  #tüm paketleri incele
 
     if not player_data:  
@@ -225,10 +229,9 @@ def search():
         return "Oyuncu adı girmediniz, lütfen bir oyuncu adı girin.", 400
 
 
-    cursor.execute("""
-        SELECT PlayerID, PlayerName, OverallRating, Position, Package FROM Players 
-        WHERE PlayerName COLLATE Latin1_General_CI_AI LIKE ?; 
-    """, ['%' + oyuncu_adi + '%']) #Türkçe vb. karakterler için standartlaştır
+    cursor.execute("""SELECT playerid, PlayerName, overallrating, Position, Package 
+                   FROM Players WHERE PlayerName ILIKE %s;""", ['%' + oyuncu_adi + '%'])
+                  #Türkçe vb. karakterler için standartlaştır
 
     players = cursor.fetchall()
     
@@ -237,7 +240,7 @@ def search():
 @app.route('/random_player')  #rastgele oyuncuya gitme fonksiyonu  
 def random_player():
     global cursor
-    cursor.execute("SELECT PlayerID FROM Players")  
+    cursor.execute("SELECT playerid FROM players")  
     player_ids = cursor.fetchall()  
 
     if not player_ids:
@@ -251,9 +254,9 @@ def similar_players(player_id):
     global cursor
 
     cursor.execute("""
-        SELECT Position, PlayingStyle, Height, CosineSimilarity
-        FROM Players 
-        WHERE PlayerID = ?;
+        SELECT position, playingstyle, height, cosinesimilarity
+        FROM players 
+        WHERE playerid = %s;
     """, (player_id,))
     player_info = cursor.fetchone()
     
@@ -261,17 +264,18 @@ def similar_players(player_id):
         return "Oyuncu bulunamadı", 404
 
 
-    playing_style = player_info.PlayingStyle
-    height = player_info.Height
-    cosine_value = player_info.CosineSimilarity
+    playing_style = player_info["playingstyle"]
+    height = player_info["height"]
+    cosine_value = player_info["cosinesimilarity"]
     cursor.execute("""
-        SELECT TOP 10 PlayerID, PlayerName,OverallRating, Package, CosineSimilarity, Height 
-        FROM Players 
-        WHERE PlayingStyle = ? 
-          AND ABS(Height - ?) <= ? 
-          AND ABS(CosineSimilarity - ?) <= ?
-          AND PlayerID != ? 
-        ORDER BY ABS(CosineSimilarity - ?), ABS(Height - ?)
+        SELECT playerid, playerName,overallrating, package, CosineSimilarity, Height 
+        FROM players 
+        WHERE playingStyle = %s
+          AND ABS(Height - %s) <= %s
+          AND ABS(CosineSimilarity - %s) <= %s
+          AND playerid != %s
+        ORDER BY ABS(CosineSimilarity - %s), ABS(Height - %s)
+        LIMIT 10
     """, (playing_style, height, height * 0.015, cosine_value, 0.01, player_id, cosine_value, height * 0.015)) #Belirtilen özelliklere göre benzer profilleri bul, benzerlik daraltıtlıp genişletilebilir.
     
     benzer_oyuncular = cursor.fetchall()
@@ -285,35 +289,33 @@ def players_detail(player_id):
     benzer_oyuncular = similar_players(player_id)
 
     stat_groups = {
-        "Offense": ["OffensiveAwareness", "Finishing", "Header", "KickingPower"],
-        "Defense": ["DefensiveAwareness", "DefensiveEngagement", "Tackling", "Aggression"],
-        "Dribbling": ["BallControl", "Dribbling", "TightPossession", "Balance"],
-        "Passing": ["LowPass", "LoftedPass", "Curve", "SetPieceTaking"],
-        "Physical": ["Height", "PhysicalContact", "Stamina", "Speed", "Acceleration", "Jumping"],
-        "Goalkeeping": ["GKAwareness", "GKReflexes", "GKReach", "GKCatch", "GKClearance"],
+        "Offense": ["offensiveawareness", "finishing", "header", "kickingpower"],
+        "Defense": ["defensiveawareness", "defensiveengagement", "tackling", "aggression"],
+        "Dribbling": ["ballcontrol", "dribbling", "tightpossession", "balance"],
+        "Passing": ["lowpass", "loftedpass", "curve", "setpiecetaking"],
+        "Physical": ["height", "physicalcontact", "stamina", "speed", "acceleration", "jumping"],
+        "Goalkeeping": ["gkawareness", "gkreflexes", "gkreach", "gkcatch", "gkclearance"],
     }
 
-    cursor.execute("SELECT * FROM Players WHERE PlayerID = ?", player_id) #player_id içine ata
+    cursor.execute("SELECT * FROM players WHERE playerid = %s", (player_id,)) #player_id içine ata
     player_data = cursor.fetchone()  #player_data içine sonuçları at
 
     if not player_data:
         return "Player Not Found", 404 
 
-    cursor.execute("SELECT Package, Position, PlayingStyle, Age,Foot,WeakFootAccuracy,WeakFootUsage,PlayerSkills FROM Players WHERE PlayerID = ?", player_id)
+    cursor.execute("SELECT package, position, playingstyle, age,foot,weakfootaccuracy,weakfootusage,playerskills FROM players WHERE playerid = %s", (player_id,))
     info_data = cursor.fetchone() #player_data sayısal değerler tuttuğundan info_data oluştur
     
-    cursor.execute("SELECT Precision, LongRangeShooting, Diligence, DribbleSpeed,Agility, Vision,Obstinacy, GoalKeeping FROM Players WHERE PlayerID = ?", player_id)
+    cursor.execute("SELECT precision, longrangeshooting, diligence, dribblespeed,agility, vision,obstinacy, goalkeeping FROM players WHERE playerid = %s", (player_id,))
     combine_data = cursor.fetchone()
 
-    cursor.execute("SELECT CosineSimilarity FROM Players WHERE PlayerID = ?", player_id)
+    cursor.execute("SELECT cosinesimilarity FROM players WHERE playerid = %s", (player_id,))
     cosine_data = cursor.fetchone()
     cosine_value = cosine_data[0]
 
-    weak_foot_accuracy_class = accuracy_class(info_data.WeakFootAccuracy) #zayıf ayak bilgisini bu sınıfta tut
+    weak_foot_accuracy_class = accuracy_class(info_data["weakfootaccuracy"]) #zayıf ayak bilgisini bu sınıfta tut
 
-
-
-    player_position = player_data.Position  #pozisyonu al
+    player_position = player_data[34]   #pozisyonu al
     player_data_dict_position, sonuclar = position_calculate(player_data, player_position) #pozisyon için calculate fonksiyonu işlemini yap hem dict hem sonuclara aktar
     
     player_data_dict, a_cosinesim_class = cosinesim_class(player_data, player_position, cosine_value)
@@ -321,16 +323,13 @@ def players_detail(player_id):
 
     player_data_dict_combine, sonuclar1 = combined_abilities(player_data)
 
-    cosine_value = player_data.CosineSimilarity 
 
     player_data_dict = {**player_data_dict_position, **player_data_dict_combine}
 
-    return render_template('players_detail.html', player_name=player_data.PlayerName, player_data=player_data_dict, stat_groups=stat_groups, 
+    return render_template('players_detail.html', player_name=player_data['playername'], player_data=player_data_dict, stat_groups=stat_groups, 
                            sonuclar=sonuclar,info_data=info_data, weak_foot_accuracy_class=weak_foot_accuracy_class,
                            combine_data=combine_data,sonuclar1=sonuclar1,cosine_data=cosine_data,cosine_value=cosine_value,
                            a_cosinesim_class=a_cosinesim_class,benzer_oyuncular=benzer_oyuncular) #html'de görüntülenecek veriler
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 10000))
-    app.run(host="0.0.0.0", port=port)
-
+    app.run(host='0.0.0.0', port=80)

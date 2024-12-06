@@ -55,22 +55,22 @@
     {% if Players %}  
     <table class="table table-dark table-hover">
         <tr>
-            <th class="yazi"> Name</th>
+            <th class="yazi">Name</th>
             <th class="yazi">Overall Rating</th>
             <th class="yazi">Position</th>
             <th class="yazi">Package</th>
         </tr>
         {% for player in Players %}
         <tr>
-            <td><a href="/player/{{ player.PlayerID }}" style="text-decoration: none;">  <!-- Oyuncuların İsmini göster ama basınca oyuncunun ID'sine gitsin (Bunu aynı oyuncunun birden fazla versiyonu olduğu için yapıyoruz) -->
-                <p class="p2 yazi">{{ player.PlayerName }}</p>
+            <td><a href="/player/{{ player.playerid }}" style="text-decoration: none;">  <!-- Oyuncuların İsmini göster ama basınca oyuncunun ID'sine gitsin (Bunu aynı oyuncunun birden fazla versiyonu olduğu için yapıyoruz) -->
+                <p class="p2 yazi">{{ player.playername }}</p>
                 
             </a></td>
-            <th class="yazi">{{ player.OverallRating }}</td>
-                <th class="yazi">{{ player.Position }}</td>
+            <th class="yazi">{{ player.overallrating }}</td>
+                <th class="yazi">{{ player.position }}</td>
             <td>
-                <a href="{{ url_for('packages', package=player.Package) }}" style="text-decoration: none;">
-                    <p class="p2 numara">{{ player.Package }}</p>
+                <a href="{{ url_for('packages', package=player.package) }}" style="text-decoration: none;">
+                    <p class="p2 numara">{{ player.package }}</p>
                 </a>
             </td>
 
