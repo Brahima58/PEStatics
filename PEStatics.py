@@ -11,11 +11,11 @@ app = Flask(__name__)
 #Global değişkenler
 conn = None 
 cursor = None
-DB_HOST = os.getenv("DB_HOST", "frankfurt-postgres.render.com")  
+DB_HOST = os.getenv("DB_HOST", "dpg-ct9nfv5umphs73fchch0-a.frankfurt-postgres.render.com")  
 DB_PORT = os.getenv("DB_PORT", "5432")
-DB_NAME = os.getenv("DB_NAME", "PEStatics")
-DB_USER = os.getenv("DB_USER", "postgres")
-DB_PASSWORD = os.getenv("DB_PASSWORD", "jhvc/327u_S")
+DB_NAME = os.getenv("DB_NAME", "pestatics_database_7nip")
+DB_USER = os.getenv("DB_USER", "pestatics_database_7nip_user")
+DB_PASSWORD = os.getenv("DB_PASSWORD", "qJqjrrk98h3m1UCg5tMJ94t6ufADoxpz")
 
 @app.before_request #Ön bağlantı kur
 def before_request():
