@@ -299,7 +299,9 @@ def like_player(player_id):
         WHERE playerid = %s
     """, (player_id,))
     conn.commit()
+
     return redirect(f"/player/{player_id}")
+
 
 @app.route('/player/<int:player_id>')  #oyuncu detay sayfası
 def players_detail(player_id):
