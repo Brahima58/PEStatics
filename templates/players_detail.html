@@ -280,10 +280,10 @@
             <button type="button" class="btn btn-outline-info mt-3 yazi">New Player Search</button>
         </a>
         <div id="like-section">
-            <form action="/player/{{ player_data.playerid }}/like" method="post">
-                <button type="submit" class="btn btn-outline-info mt-3 yazi">Beğen</button>
+            <form action="/player/{{ player_data.playerid }}/like" method="POST">
+                <button type="submit" class="btn btn-outline-info mt-3 yazi">Like</button>
             </form>
-            <span>{{ player_data.likes }}</span> beğeni
+            <span>{{ player_data.likes }}</span> likes
         </div>
 
         
