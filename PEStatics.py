@@ -3,7 +3,7 @@ import os
 import psycopg2 
 from psycopg2.extras import DictCursor
 from unidecode import unidecode
-from flask import Flask, render_template, request
+from flask import Flask, redirect, render_template, request
 
 app = Flask(__name__)
 
@@ -291,15 +291,15 @@ def similar_players(player_id):
 
 @app.route('/player/<int:player_id>/like', methods=['POST'])
 def like_player(player_id):
-    global cursor
+    global cursor, conn
+
     cursor.execute("""
         UPDATE players
         SET likes = likes + 1
         WHERE playerid = %s
     """, (player_id,))
     conn.commit()
-
-
+    return redirect(f"/player/{player_id}")
 
 @app.route('/player/<int:player_id>')  #oyuncu detay sayfası
 def players_detail(player_id):
