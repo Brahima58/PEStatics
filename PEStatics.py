@@ -341,13 +341,14 @@ def players_detail(player_id):
 
     player_data_dict_combine, sonuclar1 = combined_abilities(player_data)
 
+    likes = player_data.get('likes', 0)
 
     player_data_dict = {**player_data_dict_position, **player_data_dict_combine}
 
     return render_template('players_detail.html', player_name=player_data['playername'], player_data=player_data_dict, stat_groups=stat_groups, 
                            sonuclar=sonuclar,info_data=info_data, weak_foot_accuracy_class=weak_foot_accuracy_class,
                            combine_data=combine_data,sonuclar1=sonuclar1,cosine_data=cosine_data,cosine_value=cosine_value,
-                           a_cosinesim_class=a_cosinesim_class,benzer_oyuncular=benzer_oyuncular) #html'de görüntülenecek veriler
+                           a_cosinesim_class=a_cosinesim_class,benzer_oyuncular=benzer_oyuncular,likes=likes) #html'de görüntülenecek veriler
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)
