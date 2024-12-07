@@ -280,12 +280,12 @@
             <button type="button" class="btn btn-outline-info mt-3 yazi">New Player Search</button>
         </a>
         <div id="like-section">
-            <form action="/player/{{ player_data.playerid }}/like" method="POST">
+            <form action="{{ url_for('like_player', player_id=player.playerid) }}" method="POST">
                 <button type="submit" class="btn btn-outline-info mt-3 yazi">Like</button>
             </form>
-            <span>{{ player_data.likes }}</span> likes
+            <span>{{ player.likes }}</span> likes
         </div>
-        <p>Player id: {{ player_data.playerid }}</p>
+        
 
         
 
