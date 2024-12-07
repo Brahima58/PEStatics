@@ -11,7 +11,6 @@ app = Flask(__name__)
 #Global değişkenler
 conn = None 
 cursor = None
-
 DB_HOST = os.getenv("DB_HOST")  
 DB_PORT = os.getenv("DB_PORT")
 DB_NAME = os.getenv("DB_NAME")
@@ -271,17 +270,6 @@ def similar_players(player_id):
     if not player_info:
         return "Oyuncu bulunamadı", 404
 
-@app.route('/player/<int:player_id>/like', methods=['POST'])
-def player_like(player_id):
-    global cursor
-    cursor.execute("""
-        UPDATE players
-        SET likes = likes + 1
-        WHERE playerid = %s
-    """, (player_id,))
-    conn.commit()
-    return "Like +1"
-
 
     playing_style = player_info["playingstyle"]
     height = player_info["height"]
@@ -300,6 +288,17 @@ def player_like(player_id):
     benzer_oyuncular = cursor.fetchall()
 
     return benzer_oyuncular
+
+@app.route('/player/<int:player_id>/like', methods=['POST'])
+def like_player(player_id):
+    global cursor
+    cursor.execute("""
+        UPDATE players
+        SET likes = likes + 1
+        WHERE playerid = %s
+    """, (player_id,))
+    return "Like +1"
+
 
 @app.route('/player/<int:player_id>')  #oyuncu detay sayfası
 def players_detail(player_id):
