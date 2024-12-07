@@ -297,7 +297,8 @@ def like_player(player_id):
         SET likes = likes + 1
         WHERE playerid = %s
     """, (player_id,))
-    return "Like +1"
+    conn.commit()
+
 
 
 @app.route('/player/<int:player_id>')  #oyuncu detay sayfası
