@@ -60,6 +60,49 @@
                     </div>
                     <button type="submit" class="btn btn-info w-100 p1 yazi">Search</button>
                 </form>
+                <form action="/advanced_search" method="POST">
+                    <label for="position">Position:</label>
+                    <select name="position" id="position">
+                        <option value="GK">GK</option>
+                        <option value="CB">CB</option>
+                        <option value="RB">RB</option>
+                        <option value="LB">LB</option>
+                        <option value="DMF">DMF</option>
+                        <option value="CMF">CMF</option>
+                        <option value="RMF">RMF</option>
+                        <option value="LMF">LMF</option>
+                        <option value="AMF">AMF</option>
+                        <option value="SS">SS</option>
+                        <option value="RWF">RWF</option>
+                        <option value="LWF">LWF</option>
+                        <option value="CF">CF</option>
+                    </select>
+                    <div>
+                        <label for="speed_min">Speed:</label>
+                        <input type="range" id="speed_min" name="speed_min" min="0" max="100" oninput="updateRange('speed')">
+                        <input type="range" id="speed_max" name="speed_max" min="0" max="100" oninput="updateRange('speed')">
+                        <span id="speed_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="stamina_min">Stamina:</label>
+                        <input type="range" id="stamina_min" name="stamina_min" min="0" max="100" oninput="updateRange('stamina')">
+                        <input type="range" id="stamina_max" name="stamina_max" min="0" max="100" oninput="updateRange('stamina')">
+                        <span id="stamina_display">0 - 100</span>
+                    </div>
+                    
+                    <script>
+                        function updateRange(field) {
+                            const min = document.getElementById(`${field}_min`).value;
+                            const max = document.getElementById(`${field}_max`).value;
+                            document.getElementById(`${field}_display`).textContent = `${min} - ${max}`;
+                        }
+                    </script>
+                    
+
+                    <button type="submit">Ara</button>
+                </form>
+                
                 <a href="/random_player">
                     <button type="button" class="btn btn-outline-info mt-3 yazi">Jump a Random Player!</button>
                 </a>

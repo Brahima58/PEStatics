@@ -244,6 +244,35 @@ def search():
     
     return render_template('players.html', Players=players)
 
+@app.route('/advanced_search', methods=['POST'])
+def advanced_search():
+    query = "SELECT * FROM players WHERE 1=1"
+    params = []
+
+    # Filtrelenecek alanlar ve formdan gelen değerler
+    filters = {
+        "speed": (request.form.get("speed_min"), request.form.get("speed_max")),
+        "stamina": (request.form.get("stamina_min"), request.form.get("stamina_max")),
+        "agility": (request.form.get("agility_min"), request.form.get("agility_max")),
+        # Daha fazla alan eklenebilir
+    }
+
+    # Dinamik olarak filtre ekle
+    for column, (min_val, max_val) in filters.items():
+        if min_val and max_val:  # Her iki değer de mevcutsa
+            query += f" AND {column} BETWEEN %s AND %s"
+            params.extend([int(min_val), int(max_val)])
+
+    # Sorguyu çalıştır
+    print("Generated Query:", query)
+    print("Parameters:", params)
+    cursor.execute(query, params)
+    results = cursor.fetchall()
+
+    return render_template('results.html', players=results)
+
+
+
 @app.route('/random_player')  #rastgele oyuncuya gitme fonksiyonu  
 def random_player():
     global cursor
