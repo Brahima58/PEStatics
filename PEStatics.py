@@ -289,13 +289,11 @@ def advanced_search():
 
 
     for column, (min_val, max_val) in filters.items():
-        min_val = min_val if min_val else 0
-        max_val = max_val if max_val else 100
+        min_val = int(min_val) if min_val else 0
+        max_val = int(max_val) if max_val else 100
+        
 
-        min_val = min(int(min_val), int(max_val))
-        max_val = max(int(min_val), int(max_val))
-
-        if min_val is not None and max_val is not None:  
+        if min_val != 0 or max_val != 100:
             query += f" AND {column} BETWEEN %s AND %s"
             params.extend([min_val, max_val])
 
@@ -304,6 +302,7 @@ def advanced_search():
 
     cursor.execute(query, tuple(params))
     results = cursor.fetchall()
+
 
     return render_template('results.html', players=results)
 

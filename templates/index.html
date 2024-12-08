@@ -332,6 +332,10 @@
                         function updateRange(field) {
                             const min = document.getElementById(`${field}_min`).value;
                             const max = document.getElementById(`${field}_max`).value;
+                    
+                            if (parseInt(min) > parseInt(max)) {
+                                document.getElementById(`${field}_min`).value = max;
+                            }
                             document.getElementById(`${field}_display`).textContent = `${min} - ${max}`;
                         }
                     </script>
