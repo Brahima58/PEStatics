@@ -246,7 +246,8 @@ def search():
 
 @app.route('/advanced_search', methods=['POST'])
 def advanced_search():
-    query = "SELECT * FROM players WHERE 1=1"
+    global cursor
+    cursor.execute( "SELECT * FROM players WHERE 1=1")
     params = []
     filters = {
          "offensiveawareness": (request.form.get("offensiveawareness_min"), request.form.get("offensiveawareness_max")),
