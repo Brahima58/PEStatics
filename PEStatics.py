@@ -247,8 +247,9 @@ def search():
 @app.route('/advanced_search', methods=['POST'])
 def advanced_search():
     global cursor
-    cursor.execute( "SELECT * FROM players WHERE 1=1")
+    asd = "SELECT * FROM players WHERE 1=1"
     params = []
+    
     filters = {
          "offensiveawareness": (request.form.get("offensiveawareness_min"), request.form.get("offensiveawareness_max")),
          "ballcontrol": (request.form.get("ballcontrol_min"), request.form.get("ballcontrol_max")),
@@ -276,7 +277,7 @@ def advanced_search():
          "physicalcontact": (request.form.get("physicalcontact_min"), request.form.get("physicalcontact_max")),   
          "balance": (request.form.get("balance_min"), request.form.get("balance_max")),  
          "stamina": (request.form.get("stamina_min"), request.form.get("stamina_max")),
-         "precision": (request.form.get("precision"), request.form.get("precision_max")),
+         "precision": (request.form.get("precision_min"), request.form.get("precision_max")),
          "longrangeshooting": (request.form.get("longrangeshooting_min"), request.form.get("longrangeshooting_max")),
          "diligence": (request.form.get("diligence_min"), request.form.get("diligence_max")),
          "dribblespeed": (request.form.get("dribblespeed_min"), request.form.get("dribblespeed_max")),         
@@ -290,20 +291,20 @@ def advanced_search():
     for column, (min_val, max_val) in filters.items():
         min_val = int(min_val) if min_val else 0
         max_val = int(max_val) if max_val else 100
-        
+
 
         if min_val != 0 or max_val != 100:
-            query += f" AND {column} BETWEEN %s AND %s"
+            asd += f" AND {column} BETWEEN %s AND %s"
             params.extend([min_val, max_val])
 
-    print("Generated Query:", query)
     print("Parameters:", params)
 
-    cursor.execute(query, tuple(params))
+
+    cursor.execute(asd,(params))
     results = cursor.fetchall()
 
-
     return render_template('results.html', players=results)
+
 
 
 @app.route('/random_player')  #rastgele oyuncuya gitme fonksiyonu  
