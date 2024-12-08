@@ -78,87 +78,17 @@
                         <option value="CF">CF</option>
                     </select>
                     <div>
-                        <label for="speed_min">Speed:</label>
-                        <input type="range" id="speed_min" name="speed_min" min="0" max="100" oninput="updateRange('speed')">
-                        <input type="range" id="speed_max" name="speed_max" min="0" max="100" oninput="updateRange('speed')">
-                        <span id="speed_display">0 - 100</span>
+                        <label for="offensiveawareness_min">Offensive Awareness:</label>
+                        <input type="range" id="offensiveawareness_min" name="offensiveawareness_min" min="0" max="100" oninput="updateRange('offensiveawareness')">
+                        <input type="range" id="offensiveawareness_max" name="offensiveawareness_max" min="0" max="100" oninput="updateRange('offensiveawareness')">
+                        <span id="offensiveawareness_display">0 - 100</span>
                     </div>
                     
                     <div>
-                        <label for="stamina_min">Stamina:</label>
-                        <input type="range" id="stamina_min" name="stamina_min" min="0" max="100" oninput="updateRange('stamina')">
-                        <input type="range" id="stamina_max" name="stamina_max" min="0" max="100" oninput="updateRange('stamina')">
-                        <span id="stamina_display">0 - 100</span>
-                    </div>
-                    
-                    <div>
-                        <label for="agility_min">Agility:</label>
-                        <input type="range" id="agility_min" name="agility_min" min="0" max="100" oninput="updateRange('agility')">
-                        <input type="range" id="agility_max" name="agility_max" min="0" max="100" oninput="updateRange('agility')">
-                        <span id="agility_display">0 - 100</span>
-                    </div>
-                    
-                    <div>
-                        <label for="balance_min">Balance:</label>
-                        <input type="range" id="balance_min" name="balance_min" min="0" max="100" oninput="updateRange('balance')">
-                        <input type="range" id="balance_max" name="balance_max" min="0" max="100" oninput="updateRange('balance')">
-                        <span id="balance_display">0 - 100</span>
-                    </div>
-                    
-                    <div>
-                        <label for="acceleration_min">Acceleration:</label>
-                        <input type="range" id="acceleration_min" name="acceleration_min" min="0" max="100" oninput="updateRange('acceleration')">
-                        <input type="range" id="acceleration_max" name="acceleration_max" min="0" max="100" oninput="updateRange('acceleration')">
-                        <span id="acceleration_display">0 - 100</span>
-                    </div>
-                    
-                    <div>
-                        <label for="kickingpower_min">Kicking Power:</label>
-                        <input type="range" id="kickingpower_min" name="kickingpower_min" min="0" max="100" oninput="updateRange('kickingpower')">
-                        <input type="range" id="kickingpower_max" name="kickingpower_max" min="0" max="100" oninput="updateRange('kickingpower')">
-                        <span id="kickingpower_display">0 - 100</span>
-                    </div>
-                    
-                    <div>
-                        <label for="jumping_min">Jumping:</label>
-                        <input type="range" id="jumping_min" name="jumping_min" min="0" max="100" oninput="updateRange('jumping')">
-                        <input type="range" id="jumping_max" name="jumping_max" min="0" max="100" oninput="updateRange('jumping')">
-                        <span id="jumping_display">0 - 100</span>
-                    </div>
-                    
-                    <div>
-                        <label for="physicalcontact_min">Physical Contact:</label>
-                        <input type="range" id="physicalcontact_min" name="physicalcontact_min" min="0" max="100" oninput="updateRange('physicalcontact')">
-                        <input type="range" id="physicalcontact_max" name="physicalcontact_max" min="0" max="100" oninput="updateRange('physicalcontact')">
-                        <span id="physicalcontact_display">0 - 100</span>
-                    </div>
-                    
-                    <div>
-                        <label for="vision_min">Vision:</label>
-                        <input type="range" id="vision_min" name="vision_min" min="0" max="100" oninput="updateRange('vision')">
-                        <input type="range" id="vision_max" name="vision_max" min="0" max="100" oninput="updateRange('vision')">
-                        <span id="vision_display">0 - 100</span>
-                    </div>
-                    
-                    <div>
-                        <label for="dribblespeed_min">Dribble Speed:</label>
-                        <input type="range" id="dribblespeed_min" name="dribblespeed_min" min="0" max="100" oninput="updateRange('dribblespeed')">
-                        <input type="range" id="dribblespeed_max" name="dribblespeed_max" min="0" max="100" oninput="updateRange('dribblespeed')">
-                        <span id="dribblespeed_display">0 - 100</span>
-                    </div>
-                    
-                    <div>
-                        <label for="longrangeshooting_min">Long Range Shooting:</label>
-                        <input type="range" id="longrangeshooting_min" name="longrangeshooting_min" min="0" max="100" oninput="updateRange('longrangeshooting')">
-                        <input type="range" id="longrangeshooting_max" name="longrangeshooting_max" min="0" max="100" oninput="updateRange('longrangeshooting')">
-                        <span id="longrangeshooting_display">0 - 100</span>
-                    </div>
-                    
-                    <div>
-                        <label for="diligence_min">Diligence:</label>
-                        <input type="range" id="diligence_min" name="diligence_min" min="0" max="100" oninput="updateRange('diligence')">
-                        <input type="range" id="diligence_max" name="diligence_max" min="0" max="100" oninput="updateRange('diligence')">
-                        <span id="diligence_display">0 - 100</span>
+                        <label for="ballcontrol_min">Ball Control:</label>
+                        <input type="range" id="ballcontrol_min" name="ballcontrol_min" min="0" max="100" oninput="updateRange('ballcontrol')">
+                        <input type="range" id="ballcontrol_max" name="ballcontrol_max" min="0" max="100" oninput="updateRange('ballcontrol')">
+                        <span id="ballcontrol_display">0 - 100</span>
                     </div>
                     
                     <div>
@@ -202,6 +132,7 @@
                         <input type="range" id="header_max" name="header_max" min="0" max="100" oninput="updateRange('header')">
                         <span id="header_display">0 - 100</span>
                     </div>
+                    
                     <div>
                         <label for="setpiecetaking_min">Set Piece Taking:</label>
                         <input type="range" id="setpiecetaking_min" name="setpiecetaking_min" min="0" max="100" oninput="updateRange('setpiecetaking')">
@@ -215,7 +146,6 @@
                         <input type="range" id="curve_max" name="curve_max" min="0" max="100" oninput="updateRange('curve')">
                         <span id="curve_display">0 - 100</span>
                     </div>
-                    
                     <div>
                         <label for="defensiveawareness_min">Defensive Awareness:</label>
                         <input type="range" id="defensiveawareness_min" name="defensiveawareness_min" min="0" max="100" oninput="updateRange('defensiveawareness')">
@@ -280,6 +210,97 @@
                     </div>
                     
                     <div>
+                        <label for="speed_min">Speed:</label>
+                        <input type="range" id="speed_min" name="speed_min" min="0" max="100" oninput="updateRange('speed')">
+                        <input type="range" id="speed_max" name="speed_max" min="0" max="100" oninput="updateRange('speed')">
+                        <span id="speed_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="acceleration_min">Acceleration:</label>
+                        <input type="range" id="acceleration_min" name="acceleration_min" min="0" max="100" oninput="updateRange('acceleration')">
+                        <input type="range" id="acceleration_max" name="acceleration_max" min="0" max="100" oninput="updateRange('acceleration')">
+                        <span id="acceleration_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="kickingpower_min">Kicking Power:</label>
+                        <input type="range" id="kickingpower_min" name="kickingpower_min" min="0" max="100" oninput="updateRange('kickingpower')">
+                        <input type="range" id="kickingpower_max" name="kickingpower_max" min="0" max="100" oninput="updateRange('kickingpower')">
+                        <span id="kickingpower_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="jumping_min">Jumping:</label>
+                        <input type="range" id="jumping_min" name="jumping_min" min="0" max="100" oninput="updateRange('jumping')">
+                        <input type="range" id="jumping_max" name="jumping_max" min="0" max="100" oninput="updateRange('jumping')">
+                        <span id="jumping_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="physicalcontact_min">Physical Contact:</label>
+                        <input type="range" id="physicalcontact_min" name="physicalcontact_min" min="0" max="100" oninput="updateRange('physicalcontact')">
+                        <input type="range" id="physicalcontact_max" name="physicalcontact_max" min="0" max="100" oninput="updateRange('physicalcontact')">
+                        <span id="physicalcontact_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="balance_min">Balance:</label>
+                        <input type="range" id="balance_min" name="balance_min" min="0" max="100" oninput="updateRange('balance')">
+                        <input type="range" id="balance_max" name="balance_max" min="0" max="100" oninput="updateRange('balance')">
+                        <span id="balance_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="stamina_min">Stamina:</label>
+                        <input type="range" id="stamina_min" name="stamina_min" min="0" max="100" oninput="updateRange('stamina')">
+                        <input type="range" id="stamina_max" name="stamina_max" min="0" max="100" oninput="updateRange('stamina')">
+                        <span id="stamina_display">0 - 100</span>
+                    </div>
+
+                    <div>
+                        <label for="precision_min">Precision:</label>
+                        <input type="range" id="precision_min" name="precision_min" min="0" max="100" oninput="updateRange('precision')">
+                        <input type="range" id="precision_max" name="precision_max" min="0" max="100" oninput="updateRange('precision')">
+                        <span id="precision_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="longrangeshooting_min">Long Range Shooting:</label>
+                        <input type="range" id="longrangeshooting_min" name="longrangeshooting_min" min="0" max="100" oninput="updateRange('longrangeshooting')">
+                        <input type="range" id="longrangeshooting_max" name="longrangeshooting_max" min="0" max="100" oninput="updateRange('longrangeshooting')">
+                        <span id="longrangeshooting_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="diligence_min">Diligence:</label>
+                        <input type="range" id="diligence_min" name="diligence_min" min="0" max="100" oninput="updateRange('diligence')">
+                        <input type="range" id="diligence_max" name="diligence_max" min="0" max="100" oninput="updateRange('diligence')">
+                        <span id="diligence_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="dribblespeed_min">Dribble Speed:</label>
+                        <input type="range" id="dribblespeed_min" name="dribblespeed_min" min="0" max="100" oninput="updateRange('dribblespeed')">
+                        <input type="range" id="dribblespeed_max" name="dribblespeed_max" min="0" max="100" oninput="updateRange('dribblespeed')">
+                        <span id="dribblespeed_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="agility_min">Agility:</label>
+                        <input type="range" id="agility_min" name="agility_min" min="0" max="100" oninput="updateRange('agility')">
+                        <input type="range" id="agility_max" name="agility_max" min="0" max="100" oninput="updateRange('agility')">
+                        <span id="agility_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="vision_min">Vision:</label>
+                        <input type="range" id="vision_min" name="vision_min" min="0" max="100" oninput="updateRange('vision')">
+                        <input type="range" id="vision_max" name="vision_max" min="0" max="100" oninput="updateRange('vision')">
+                        <span id="vision_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
                         <label for="obstinacy_min">Obstinacy:</label>
                         <input type="range" id="obstinacy_min" name="obstinacy_min" min="0" max="100" oninput="updateRange('obstinacy')">
                         <input type="range" id="obstinacy_max" name="obstinacy_max" min="0" max="100" oninput="updateRange('obstinacy')">
@@ -292,42 +313,6 @@
                         <input type="range" id="goalkeeping_max" name="goalkeeping_max" min="0" max="100" oninput="updateRange('goalkeeping')">
                         <span id="goalkeeping_display">0 - 100</span>
                     </div>
-                    
-                    <div>
-                        <label for="height_min">Height:</label>
-                        <input type="range" id="height_min" name="height_min" min="140" max="220" oninput="updateRange('height')">
-                        <input type="range" id="height_max" name="height_max" min="140" max="220" oninput="updateRange('height')">
-                        <span id="height_display">0 - 100</span>
-                    </div>
-                    
-                    <div>
-                        <label for="offensiveawareness_min">Offensive Awareness:</label>
-                        <input type="range" id="offensiveawareness_min" name="offensiveawareness_min" min="0" max="100" oninput="updateRange('offensiveawareness')">
-                        <input type="range" id="offensiveawareness_max" name="offensiveawareness_max" min="0" max="100" oninput="updateRange('offensiveawareness')">
-                        <span id="offensiveawareness_display">0 - 100</span>
-                    </div>
-                    
-                    <div>
-                        <label for="ballcontrol_min">Ball Control:</label>
-                        <input type="range" id="ballcontrol_min" name="ballcontrol_min" min="0" max="100" oninput="updateRange('ballcontrol')">
-                        <input type="range" id="ballcontrol_max" name="ballcontrol_max" min="0" max="100" oninput="updateRange('ballcontrol')">
-                        <span id="ballcontrol_display">0 - 100</span>
-                    </div>
-                    
-                    <div>
-                        <label for="loftedpass_min">Lofted Pass:</label>
-                        <input type="range" id="loftedpass_min" name="loftedpass_min" min="0" max="100" oninput="updateRange('loftedpass')">
-                        <input type="range" id="loftedpass_max" name="loftedpass_max" min="0" max="100" oninput="updateRange('loftedpass')">
-                        <span id="loftedpass_display">0 - 100</span>
-                    </div>
-                    
-                    <div>
-                        <label for="vision_min">Vision:</label>
-                        <input type="range" id="vision_min" name="vision_min" min="0" max="100" oninput="updateRange('vision')">
-                        <input type="range" id="vision_max" name="vision_max" min="0" max="100" oninput="updateRange('vision')">
-                        <span id="vision_display">0 - 100</span>
-                    </div>
-                    
                     <script>
                         function updateRange(field) {
                             const min = document.getElementById(`${field}_min`).value;
