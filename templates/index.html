@@ -77,31 +77,105 @@
                         <option value="LWF">LWF</option>
                         <option value="CF">CF</option>
                     </select>
-                    <div>
-                        <label for="speed_min">Speed:</label>
-                        <input type="range" id="speed_min" name="speed_min" min="0" max="100" oninput="updateRange('speed')">
-                        <input type="range" id="speed_max" name="speed_max" min="0" max="100" oninput="updateRange('speed')">
-                        <span id="speed_display">0 - 100</span>
-                    </div>
                     
-                    <div>
-                        <label for="stamina_min">Stamina:</label>
-                        <input type="range" id="stamina_min" name="stamina_min" min="0" max="100" oninput="updateRange('stamina')">
-                        <input type="range" id="stamina_max" name="stamina_max" min="0" max="100" oninput="updateRange('stamina')">
-                        <span id="stamina_display">0 - 100</span>
-                    </div>
-                    
-                    <script>
-                        function updateRange(field) {
-                            const min = document.getElementById(`${field}_min`).value;
-                            const max = document.getElementById(`${field}_max`).value;
-                            document.getElementById(`${field}_display`).textContent = `${min} - ${max}`;
-                        }
-                    </script>
-                    
-
-                    <button type="submit">Ara</button>
+                    <div id="filters-container"></div>
+                
+                    <button type="submit">Advanced Search</button>
                 </form>
+                
+                <script>
+    
+                    const filters = [
+                    { name: "speed", label: "Speed", min: 0, max: 100 },
+                    { name: "stamina", label: "Stamina", min: 0, max: 100 },
+                    { name: "agility", label: "Agility", min: 0, max: 100 },
+                    { name: "balance", label: "Balance", min: 0, max: 100 },
+                    { name: "acceleration", label: "Acceleration", min: 0, max: 100 },
+                    { name: "kickingpower", label: "Kicking Power", min: 0, max: 100 },
+                    { name: "jumping", label: "Jumping", min: 0, max: 100 },
+                    { name: "physicalcontact", label: "Physical Contact", min: 0, max: 100 },
+                    { name: "vision", label: "Vision", min: 0, max: 100 },
+                    { name: "dribblespeed", label: "Dribble Speed", min: 0, max: 100 },
+                    { name: "longrangeshooting", label: "Long Range Shooting", min: 0, max: 100 },
+                    { name: "diligence", label: "Diligence", min: 0, max: 100 },
+                    { name: "dribbling", label: "Dribbling", min: 0, max: 100 },
+                    { name: "tightpossession", label: "Tight Possession", min: 0, max: 100 },
+                    { name: "lowpass", label: "Low Pass", min: 0, max: 100 },
+                    { name: "loftedpass", label: "Lofted Pass", min: 0, max: 100 },
+                    { name: "finishing", label: "Finishing", min: 0, max: 100 },
+                    { name: "header", label: "Header", min: 0, max: 100 },
+                    { name: "setpiecetaking", label: "Set Piece Taking", min: 0, max: 100 },
+                    { name: "curve", label: "Curve", min: 0, max: 100 },
+                    { name: "defensiveawareness", label: "Defensive Awareness", min: 0, max: 100 },
+                    { name: "tackling", label: "Tackling", min: 0, max: 100 },
+                    { name: "aggression", label: "Aggression", min: 0, max: 100 },
+                    { name: "defensiveengagement", label: "Defensive Engagement", min: 0, max: 100 },
+                    { name: "gkawareness", label: "GK Awareness", min: 0, max: 100 },
+                    { name: "gkcatch", label: "GK Catch", min: 0, max: 100 },
+                    { name: "gkclearance", label: "GK Clearance", min: 0, max: 100 },
+                    { name: "gkreflexes", label: "GK Reflexes", min: 0, max: 100 },
+                    { name: "gkreach", label: "GK Reach", min: 0, max: 100 },
+                    { name: "obstinacy", label: "Obstinacy", min: 0, max: 100 },
+                    { name: "goalkeeping", label: "Goalkeeping", min: 0, max: 100 },
+                    { name: "height", label: "Height", min: 0, max: 100 },
+                    { name: "offensiveawareness", label: "Offensive Awareness", min: 0, max: 100 },
+                    { name: "ballcontrol", label: "Ball Control", min: 0, max: 100 },
+                    { name: "cosinesimilarity", label: "Cosine Similarity", min: -1, max: 1 }
+                    ];
+                
+
+                    function createFilterElements() {
+                        const container = document.getElementById("filters-container");
+                
+                        filters.forEach(filter => {
+                            const filterDiv = document.createElement("div");
+                
+   
+                            const label = document.createElement("label");
+                            label.textContent = `${filter.label}:`;
+                            filterDiv.appendChild(label);
+                
+
+                            const minInput = createSlider(filter.name, filter.min, filter.max);
+                            const maxInput = createSlider(filter.name, filter.min, filter.max);
+                
+                            filterDiv.appendChild(minInput);
+                            filterDiv.appendChild(maxInput);
+                
+
+                            const displaySpan = document.createElement("span");
+                            displaySpan.id = `${filter.name}_display`;
+                            displaySpan.textContent = `${filter.min} - ${filter.max}`;
+                            filterDiv.appendChild(displaySpan);
+                
+                            container.appendChild(filterDiv);
+                        });
+                    }
+
+                    function createSlider(name, min, max) {
+                        const input = document.createElement("input");
+                        input.type = "range";
+                        input.min = min;
+                        input.max = max;
+                        input.value = min;
+                        input.id = `${name}_min`; 
+                        input.name = `${name}_min`; 
+                        input.oninput = function() {
+                            updateRange(name);
+                        };
+                        return input;
+                    }
+                
+
+                    function updateRange(name) {
+                        const min = document.querySelector(`#${name}_min`).value;
+                        const max = document.querySelector(`#${name}_max`).value;
+                        document.querySelector(`#${name}_display`).textContent = `${min} - ${max}`;
+                    }
+                
+                    window.onload = createFilterElements;
+                </script>
+                
                 
                 <a href="/random_player">
                     <button type="button" class="btn btn-outline-info mt-3 yazi">Jump a Random Player!</button>

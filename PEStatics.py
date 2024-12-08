@@ -248,22 +248,52 @@ def search():
 def advanced_search():
     query = "SELECT * FROM players WHERE 1=1"
     params = []
-
-    # Filtrelenecek alanlar ve formdan gelen değerler
     filters = {
-        "speed": (request.form.get("speed_min"), request.form.get("speed_max")),
-        "stamina": (request.form.get("stamina_min"), request.form.get("stamina_max")),
-        "agility": (request.form.get("agility_min"), request.form.get("agility_max")),
-        # Daha fazla alan eklenebilir
+         "speed": (request.form.get("speed_min"), request.form.get("speed_max")),
+         "stamina": (request.form.get("stamina_min"), request.form.get("stamina_max")),
+         "agility": (request.form.get("agility_min"), request.form.get("agility_max")),
+         "balance": (request.form.get("balance_min"), request.form.get("balance_max")),
+         "acceleration": (request.form.get("acceleration_min"), request.form.get("acceleration_max")),
+         "kickingpower": (request.form.get("kickingpower_min"), request.form.get("kickingpower_max")),
+         "jumping": (request.form.get("jumping_min"), request.form.get("jumping_max")),
+         "physicalcontact": (request.form.get("physicalcontact_min"), request.form.get("physicalcontact_max")),
+         "vision": (request.form.get("vision_min"), request.form.get("vision_max")),
+         "dribblespeed": (request.form.get("dribblespeed_min"), request.form.get("dribblespeed_max")),
+         "longrangeshooting": (request.form.get("longrangeshooting_min"), request.form.get("longrangeshooting_max")),
+         "diligence": (request.form.get("diligence_min"), request.form.get("diligence_max")),
+         "dribbling": (request.form.get("dribbling_min"), request.form.get("dribbling_max")),
+         "tightpossession": (request.form.get("tightpossession_min"), request.form.get("tightpossession_max")),
+         "lowpass": (request.form.get("lowpass_min"), request.form.get("lowpass_max")),
+         "loftedpass": (request.form.get("loftedpass_min"), request.form.get("loftedpass_max")),
+         "finishing": (request.form.get("finishing_min"), request.form.get("finishing_max")),
+         "header": (request.form.get("header_min"), request.form.get("header_max")),
+         "setpiecetaking": (request.form.get("setpiecetaking_min"), request.form.get("setpiecetaking_max")),
+         "curve": (request.form.get("curve_min"), request.form.get("curve_max")),
+         "defensiveawareness": (request.form.get("defensiveawareness_min"), request.form.get("defensiveawareness_max")),
+         "tackling": (request.form.get("tackling_min"), request.form.get("tackling_max")),
+         "aggression": (request.form.get("aggression_min"), request.form.get("aggression_max")),
+         "defensiveengagement": (request.form.get("defensiveengagement_min"), request.form.get("defensiveengagement_max")),
+         "gkawareness": (request.form.get("gkawareness_min"), request.form.get("gkawareness_max")),
+         "gkcatch": (request.form.get("gkcatch_min"), request.form.get("gkcatch_max")),
+         "gkclearance": (request.form.get("gkclearance_min"), request.form.get("gkclearance_max")),
+         "gkreflexes": (request.form.get("gkreflexes_min"), request.form.get("gkreflexes_max")),
+         "gkreach": (request.form.get("gkreach_min"), request.form.get("gkreach_max")),
+         "obstinacy": (request.form.get("obstinacy_min"), request.form.get("obstinacy_max")),
+         "goalkeeping": (request.form.get("goalkeeping_min"), request.form.get("goalkeeping_max")),
+         "height": (request.form.get("height_min"), request.form.get("height_max")),
+         "offensiveawareness": (request.form.get("offensiveawareness_min"), request.form.get("offensiveawareness_max")),
+         "ballcontrol": (request.form.get("ballcontrol_min"), request.form.get("ballcontrol_max")),
+         "loftedpass": (request.form.get("loftedpass_min"), request.form.get("loftedpass_max")),
+         "vision": (request.form.get("vision_min"), request.form.get("vision_max")),
+         "cosinesimilarity": (request.form.get("cosinesimilarity_min"), request.form.get("cosinesimilarity_max")),
     }
 
-    # Dinamik olarak filtre ekle
+
     for column, (min_val, max_val) in filters.items():
-        if min_val and max_val:  # Her iki değer de mevcutsa
+        if min_val and max_val:  
             query += f" AND {column} BETWEEN %s AND %s"
             params.extend([int(min_val), int(max_val)])
 
-    # Sorguyu çalıştır
     print("Generated Query:", query)
     print("Parameters:", params)
     cursor.execute(query, params)
