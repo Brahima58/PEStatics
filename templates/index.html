@@ -313,19 +313,19 @@
                         <input type="range" id="goalkeeping_max" name="goalkeeping_max" min="0" max="100" oninput="updateRange('goalkeeping')">
                         <span id="goalkeeping_display">0 - 100</span>
                     </div>
-                    <script>
-                        function updateRange(field) {
-                            const min = document.getElementById(`${field}_min`).value;
-                            const max = document.getElementById(`${field}_max`).value;
-                    
-                            if (parseInt(min) > parseInt(max)) {
-                                document.getElementById(`${field}_min`).value = max;
-                            }
-                            document.getElementById(`${field}_display`).textContent = `${min} - ${max}`;
-                        }
-                    </script>
                     <button type="submit">Advanced Search</button>
                 </form>
+                <script>
+                    function updateRange(field) {
+                        const min = document.getElementById(`${field}_min`).value;
+                        const max = document.getElementById(`${field}_max`).value;
+                
+                        if (parseInt(min) > parseInt(max)) {
+                            document.getElementById(`${field}_min`).value = max;
+                        }
+                        document.getElementById(`${field}_display`).textContent = `${min} - ${max}`;
+                    }
+                </script>
                 
                 <a href="/random_player">
                     <button type="button" class="btn btn-outline-info mt-3 yazi">Jump a Random Player!</button>
