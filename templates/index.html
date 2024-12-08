@@ -77,105 +77,273 @@
                         <option value="LWF">LWF</option>
                         <option value="CF">CF</option>
                     </select>
+                    <div>
+                        <label for="speed_min">Speed:</label>
+                        <input type="range" id="speed_min" name="speed_min" min="0" max="100" oninput="updateRange('speed')">
+                        <input type="range" id="speed_max" name="speed_max" min="0" max="100" oninput="updateRange('speed')">
+                        <span id="speed_display">0 - 100</span>
+                    </div>
                     
-                    <div id="filters-container"></div>
-                
+                    <div>
+                        <label for="stamina_min">Stamina:</label>
+                        <input type="range" id="stamina_min" name="stamina_min" min="0" max="100" oninput="updateRange('stamina')">
+                        <input type="range" id="stamina_max" name="stamina_max" min="0" max="100" oninput="updateRange('stamina')">
+                        <span id="stamina_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="agility_min">Agility:</label>
+                        <input type="range" id="agility_min" name="agility_min" min="0" max="100" oninput="updateRange('agility')">
+                        <input type="range" id="agility_max" name="agility_max" min="0" max="100" oninput="updateRange('agility')">
+                        <span id="agility_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="balance_min">Balance:</label>
+                        <input type="range" id="balance_min" name="balance_min" min="0" max="100" oninput="updateRange('balance')">
+                        <input type="range" id="balance_max" name="balance_max" min="0" max="100" oninput="updateRange('balance')">
+                        <span id="balance_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="acceleration_min">Acceleration:</label>
+                        <input type="range" id="acceleration_min" name="acceleration_min" min="0" max="100" oninput="updateRange('acceleration')">
+                        <input type="range" id="acceleration_max" name="acceleration_max" min="0" max="100" oninput="updateRange('acceleration')">
+                        <span id="acceleration_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="kickingpower_min">Kicking Power:</label>
+                        <input type="range" id="kickingpower_min" name="kickingpower_min" min="0" max="100" oninput="updateRange('kickingpower')">
+                        <input type="range" id="kickingpower_max" name="kickingpower_max" min="0" max="100" oninput="updateRange('kickingpower')">
+                        <span id="kickingpower_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="jumping_min">Jumping:</label>
+                        <input type="range" id="jumping_min" name="jumping_min" min="0" max="100" oninput="updateRange('jumping')">
+                        <input type="range" id="jumping_max" name="jumping_max" min="0" max="100" oninput="updateRange('jumping')">
+                        <span id="jumping_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="physicalcontact_min">Physical Contact:</label>
+                        <input type="range" id="physicalcontact_min" name="physicalcontact_min" min="0" max="100" oninput="updateRange('physicalcontact')">
+                        <input type="range" id="physicalcontact_max" name="physicalcontact_max" min="0" max="100" oninput="updateRange('physicalcontact')">
+                        <span id="physicalcontact_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="vision_min">Vision:</label>
+                        <input type="range" id="vision_min" name="vision_min" min="0" max="100" oninput="updateRange('vision')">
+                        <input type="range" id="vision_max" name="vision_max" min="0" max="100" oninput="updateRange('vision')">
+                        <span id="vision_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="dribblespeed_min">Dribble Speed:</label>
+                        <input type="range" id="dribblespeed_min" name="dribblespeed_min" min="0" max="100" oninput="updateRange('dribblespeed')">
+                        <input type="range" id="dribblespeed_max" name="dribblespeed_max" min="0" max="100" oninput="updateRange('dribblespeed')">
+                        <span id="dribblespeed_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="longrangeshooting_min">Long Range Shooting:</label>
+                        <input type="range" id="longrangeshooting_min" name="longrangeshooting_min" min="0" max="100" oninput="updateRange('longrangeshooting')">
+                        <input type="range" id="longrangeshooting_max" name="longrangeshooting_max" min="0" max="100" oninput="updateRange('longrangeshooting')">
+                        <span id="longrangeshooting_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="diligence_min">Diligence:</label>
+                        <input type="range" id="diligence_min" name="diligence_min" min="0" max="100" oninput="updateRange('diligence')">
+                        <input type="range" id="diligence_max" name="diligence_max" min="0" max="100" oninput="updateRange('diligence')">
+                        <span id="diligence_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="dribbling_min">Dribbling:</label>
+                        <input type="range" id="dribbling_min" name="dribbling_min" min="0" max="100" oninput="updateRange('dribbling')">
+                        <input type="range" id="dribbling_max" name="dribbling_max" min="0" max="100" oninput="updateRange('dribbling')">
+                        <span id="dribbling_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="tightpossession_min">Tight Possession:</label>
+                        <input type="range" id="tightpossession_min" name="tightpossession_min" min="0" max="100" oninput="updateRange('tightpossession')">
+                        <input type="range" id="tightpossession_max" name="tightpossession_max" min="0" max="100" oninput="updateRange('tightpossession')">
+                        <span id="tightpossession_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="lowpass_min">Low Pass:</label>
+                        <input type="range" id="lowpass_min" name="lowpass_min" min="0" max="100" oninput="updateRange('lowpass')">
+                        <input type="range" id="lowpass_max" name="lowpass_max" min="0" max="100" oninput="updateRange('lowpass')">
+                        <span id="lowpass_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="loftedpass_min">Lofted Pass:</label>
+                        <input type="range" id="loftedpass_min" name="loftedpass_min" min="0" max="100" oninput="updateRange('loftedpass')">
+                        <input type="range" id="loftedpass_max" name="loftedpass_max" min="0" max="100" oninput="updateRange('loftedpass')">
+                        <span id="loftedpass_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="finishing_min">Finishing:</label>
+                        <input type="range" id="finishing_min" name="finishing_min" min="0" max="100" oninput="updateRange('finishing')">
+                        <input type="range" id="finishing_max" name="finishing_max" min="0" max="100" oninput="updateRange('finishing')">
+                        <span id="finishing_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="header_min">Header:</label>
+                        <input type="range" id="header_min" name="header_min" min="0" max="100" oninput="updateRange('header')">
+                        <input type="range" id="header_max" name="header_max" min="0" max="100" oninput="updateRange('header')">
+                        <span id="header_display">0 - 100</span>
+                    </div>
+                    <div>
+                        <label for="setpiecetaking_min">Set Piece Taking:</label>
+                        <input type="range" id="setpiecetaking_min" name="setpiecetaking_min" min="0" max="100" oninput="updateRange('setpiecetaking')">
+                        <input type="range" id="setpiecetaking_max" name="setpiecetaking_max" min="0" max="100" oninput="updateRange('setpiecetaking')">
+                        <span id="setpiecetaking_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="curve_min">Curve:</label>
+                        <input type="range" id="curve_min" name="curve_min" min="0" max="100" oninput="updateRange('curve')">
+                        <input type="range" id="curve_max" name="curve_max" min="0" max="100" oninput="updateRange('curve')">
+                        <span id="curve_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="defensiveawareness_min">Defensive Awareness:</label>
+                        <input type="range" id="defensiveawareness_min" name="defensiveawareness_min" min="0" max="100" oninput="updateRange('defensiveawareness')">
+                        <input type="range" id="defensiveawareness_max" name="defensiveawareness_max" min="0" max="100" oninput="updateRange('defensiveawareness')">
+                        <span id="defensiveawareness_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="tackling_min">Tackling:</label>
+                        <input type="range" id="tackling_min" name="tackling_min" min="0" max="100" oninput="updateRange('tackling')">
+                        <input type="range" id="tackling_max" name="tackling_max" min="0" max="100" oninput="updateRange('tackling')">
+                        <span id="tackling_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="aggression_min">Aggression:</label>
+                        <input type="range" id="aggression_min" name="aggression_min" min="0" max="100" oninput="updateRange('aggression')">
+                        <input type="range" id="aggression_max" name="aggression_max" min="0" max="100" oninput="updateRange('aggression')">
+                        <span id="aggression_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="defensiveengagement_min">Defensive Engagement:</label>
+                        <input type="range" id="defensiveengagement_min" name="defensiveengagement_min" min="0" max="100" oninput="updateRange('defensiveengagement')">
+                        <input type="range" id="defensiveengagement_max" name="defensiveengagement_max" min="0" max="100" oninput="updateRange('defensiveengagement')">
+                        <span id="defensiveengagement_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="gkawareness_min">GK Awareness:</label>
+                        <input type="range" id="gkawareness_min" name="gkawareness_min" min="0" max="100" oninput="updateRange('gkawareness')">
+                        <input type="range" id="gkawareness_max" name="gkawareness_max" min="0" max="100" oninput="updateRange('gkawareness')">
+                        <span id="gkawareness_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="gkcatch_min">GK Catch:</label>
+                        <input type="range" id="gkcatch_min" name="gkcatch_min" min="0" max="100" oninput="updateRange('gkcatch')">
+                        <input type="range" id="gkcatch_max" name="gkcatch_max" min="0" max="100" oninput="updateRange('gkcatch')">
+                        <span id="gkcatch_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="gkclearance_min">GK Clearance:</label>
+                        <input type="range" id="gkclearance_min" name="gkclearance_min" min="0" max="100" oninput="updateRange('gkclearance')">
+                        <input type="range" id="gkclearance_max" name="gkclearance_max" min="0" max="100" oninput="updateRange('gkclearance')">
+                        <span id="gkclearance_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="gkreflexes_min">GK Reflexes:</label>
+                        <input type="range" id="gkreflexes_min" name="gkreflexes_min" min="0" max="100" oninput="updateRange('gkreflexes')">
+                        <input type="range" id="gkreflexes_max" name="gkreflexes_max" min="0" max="100" oninput="updateRange('gkreflexes')">
+                        <span id="gkreflexes_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="gkreach_min">GK Reach:</label>
+                        <input type="range" id="gkreach_min" name="gkreach_min" min="0" max="100" oninput="updateRange('gkreach')">
+                        <input type="range" id="gkreach_max" name="gkreach_max" min="0" max="100" oninput="updateRange('gkreach')">
+                        <span id="gkreach_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="obstinacy_min">Obstinacy:</label>
+                        <input type="range" id="obstinacy_min" name="obstinacy_min" min="0" max="100" oninput="updateRange('obstinacy')">
+                        <input type="range" id="obstinacy_max" name="obstinacy_max" min="0" max="100" oninput="updateRange('obstinacy')">
+                        <span id="obstinacy_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="goalkeeping_min">Goalkeeping:</label>
+                        <input type="range" id="goalkeeping_min" name="goalkeeping_min" min="0" max="100" oninput="updateRange('goalkeeping')">
+                        <input type="range" id="goalkeeping_max" name="goalkeeping_max" min="0" max="100" oninput="updateRange('goalkeeping')">
+                        <span id="goalkeeping_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="height_min">Height:</label>
+                        <input type="range" id="height_min" name="height_min" min="0" max="100" oninput="updateRange('height')">
+                        <input type="range" id="height_max" name="height_max" min="0" max="100" oninput="updateRange('height')">
+                        <span id="height_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="offensiveawareness_min">Offensive Awareness:</label>
+                        <input type="range" id="offensiveawareness_min" name="offensiveawareness_min" min="0" max="100" oninput="updateRange('offensiveawareness')">
+                        <input type="range" id="offensiveawareness_max" name="offensiveawareness_max" min="0" max="100" oninput="updateRange('offensiveawareness')">
+                        <span id="offensiveawareness_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="ballcontrol_min">Ball Control:</label>
+                        <input type="range" id="ballcontrol_min" name="ballcontrol_min" min="0" max="100" oninput="updateRange('ballcontrol')">
+                        <input type="range" id="ballcontrol_max" name="ballcontrol_max" min="0" max="100" oninput="updateRange('ballcontrol')">
+                        <span id="ballcontrol_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="loftedpass_min">Lofted Pass:</label>
+                        <input type="range" id="loftedpass_min" name="loftedpass_min" min="0" max="100" oninput="updateRange('loftedpass')">
+                        <input type="range" id="loftedpass_max" name="loftedpass_max" min="0" max="100" oninput="updateRange('loftedpass')">
+                        <span id="loftedpass_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="vision_min">Vision:</label>
+                        <input type="range" id="vision_min" name="vision_min" min="0" max="100" oninput="updateRange('vision')">
+                        <input type="range" id="vision_max" name="vision_max" min="0" max="100" oninput="updateRange('vision')">
+                        <span id="vision_display">0 - 100</span>
+                    </div>
+                    
+                    <div>
+                        <label for="cosinesimilarity_min">Cosine Similarity:</label>
+                        <input type="range" id="cosinesimilarity_min" name="cosinesimilarity_min" min="0" max="100" oninput="updateRange('cosinesimilarity')">
+                        <input type="range" id="cosinesimilarity_max" name="cosinesimilarity_max" min="0" max="100" oninput="updateRange('cosinesimilarity')">
+                        <span id="cosinesimilarity_display">0 - 100</span>
+                    </div>
+                    
+                    <script>
+                        function updateRange(field) {
+                            const min = document.getElementById(`${field}_min`).value;
+                            const max = document.getElementById(`${field}_max`).value;
+                            document.getElementById(`${field}_display`).textContent = `${min} - ${max}`;
+                        }
+                    </script>
                     <button type="submit">Advanced Search</button>
                 </form>
-                
-                <script>
-    
-                    const filters = [
-                    { name: "speed", label: "Speed", min: 0, max: 100 },
-                    { name: "stamina", label: "Stamina", min: 0, max: 100 },
-                    { name: "agility", label: "Agility", min: 0, max: 100 },
-                    { name: "balance", label: "Balance", min: 0, max: 100 },
-                    { name: "acceleration", label: "Acceleration", min: 0, max: 100 },
-                    { name: "kickingpower", label: "Kicking Power", min: 0, max: 100 },
-                    { name: "jumping", label: "Jumping", min: 0, max: 100 },
-                    { name: "physicalcontact", label: "Physical Contact", min: 0, max: 100 },
-                    { name: "vision", label: "Vision", min: 0, max: 100 },
-                    { name: "dribblespeed", label: "Dribble Speed", min: 0, max: 100 },
-                    { name: "longrangeshooting", label: "Long Range Shooting", min: 0, max: 100 },
-                    { name: "diligence", label: "Diligence", min: 0, max: 100 },
-                    { name: "dribbling", label: "Dribbling", min: 0, max: 100 },
-                    { name: "tightpossession", label: "Tight Possession", min: 0, max: 100 },
-                    { name: "lowpass", label: "Low Pass", min: 0, max: 100 },
-                    { name: "loftedpass", label: "Lofted Pass", min: 0, max: 100 },
-                    { name: "finishing", label: "Finishing", min: 0, max: 100 },
-                    { name: "header", label: "Header", min: 0, max: 100 },
-                    { name: "setpiecetaking", label: "Set Piece Taking", min: 0, max: 100 },
-                    { name: "curve", label: "Curve", min: 0, max: 100 },
-                    { name: "defensiveawareness", label: "Defensive Awareness", min: 0, max: 100 },
-                    { name: "tackling", label: "Tackling", min: 0, max: 100 },
-                    { name: "aggression", label: "Aggression", min: 0, max: 100 },
-                    { name: "defensiveengagement", label: "Defensive Engagement", min: 0, max: 100 },
-                    { name: "gkawareness", label: "GK Awareness", min: 0, max: 100 },
-                    { name: "gkcatch", label: "GK Catch", min: 0, max: 100 },
-                    { name: "gkclearance", label: "GK Clearance", min: 0, max: 100 },
-                    { name: "gkreflexes", label: "GK Reflexes", min: 0, max: 100 },
-                    { name: "gkreach", label: "GK Reach", min: 0, max: 100 },
-                    { name: "obstinacy", label: "Obstinacy", min: 0, max: 100 },
-                    { name: "goalkeeping", label: "Goalkeeping", min: 0, max: 100 },
-                    { name: "height", label: "Height", min: 0, max: 100 },
-                    { name: "offensiveawareness", label: "Offensive Awareness", min: 0, max: 100 },
-                    { name: "ballcontrol", label: "Ball Control", min: 0, max: 100 },
-                    { name: "cosinesimilarity", label: "Cosine Similarity", min: -1, max: 1 }
-                    ];
-                
-
-                    function createFilterElements() {
-                        const container = document.getElementById("filters-container");
-                
-                        filters.forEach(filter => {
-                            const filterDiv = document.createElement("div");
-                
-   
-                            const label = document.createElement("label");
-                            label.textContent = `${filter.label}:`;
-                            filterDiv.appendChild(label);
-                
-
-                            const minInput = createSlider(filter.name, filter.min, filter.max);
-                            const maxInput = createSlider(filter.name, filter.min, filter.max);
-                
-                            filterDiv.appendChild(minInput);
-                            filterDiv.appendChild(maxInput);
-                
-
-                            const displaySpan = document.createElement("span");
-                            displaySpan.id = `${filter.name}_display`;
-                            displaySpan.textContent = `${filter.min} - ${filter.max}`;
-                            filterDiv.appendChild(displaySpan);
-                
-                            container.appendChild(filterDiv);
-                        });
-                    }
-
-                    function createSlider(name, min, max) {
-                        const input = document.createElement("input");
-                        input.type = "range";
-                        input.min = min;
-                        input.max = max;
-                        input.value = min;
-                        input.id = `${name}_min`; 
-                        input.name = `${name}_min`; 
-                        input.oninput = function() {
-                            updateRange(name);
-                        };
-                        return input;
-                    }
-                
-
-                    function updateRange(name) {
-                        const min = document.querySelector(`#${name}_min`).value;
-                        const max = document.querySelector(`#${name}_max`).value;
-                        document.querySelector(`#${name}_display`).textContent = `${min} - ${max}`;
-                    }
-                
-                    window.onload = createFilterElements;
-                </script>
-                
                 
                 <a href="/random_player">
                     <button type="button" class="btn btn-outline-info mt-3 yazi">Jump a Random Player!</button>
