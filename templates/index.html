@@ -328,13 +328,6 @@
                         <span id="vision_display">0 - 100</span>
                     </div>
                     
-                    <div>
-                        <label for="cosinesimilarity_min">Cosine Similarity:</label>
-                        <input type="range" id="cosinesimilarity_min" name="cosinesimilarity_min" min="0" max="100" oninput="updateRange('cosinesimilarity')">
-                        <input type="range" id="cosinesimilarity_max" name="cosinesimilarity_max" min="0" max="100" oninput="updateRange('cosinesimilarity')">
-                        <span id="cosinesimilarity_display">0 - 100</span>
-                    </div>
-                    
                     <script>
                         function updateRange(field) {
                             const min = document.getElementById(`${field}_min`).value;

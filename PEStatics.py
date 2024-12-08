@@ -285,22 +285,27 @@ def advanced_search():
          "ballcontrol": (request.form.get("ballcontrol_min"), request.form.get("ballcontrol_max")),
          "loftedpass": (request.form.get("loftedpass_min"), request.form.get("loftedpass_max")),
          "vision": (request.form.get("vision_min"), request.form.get("vision_max")),
-         "cosinesimilarity": (request.form.get("cosinesimilarity_min"), request.form.get("cosinesimilarity_max")),
     }
 
 
     for column, (min_val, max_val) in filters.items():
-        if min_val and max_val:  
+        min_val = min_val if min_val else 0
+        max_val = max_val if max_val else 100
+
+        min_val = min(int(min_val), int(max_val))
+        max_val = max(int(min_val), int(max_val))
+
+        if min_val is not None and max_val is not None:  
             query += f" AND {column} BETWEEN %s AND %s"
-            params.extend([int(min_val), int(max_val)])
+            params.extend([min_val, max_val])
 
     print("Generated Query:", query)
     print("Parameters:", params)
-    cursor.execute(query, params)
+
+    cursor.execute(query, tuple(params))
     results = cursor.fetchall()
 
     return render_template('results.html', players=results)
-
 
 
 @app.route('/random_player')  #rastgele oyuncuya gitme fonksiyonu  
