@@ -303,7 +303,7 @@ def advanced_search():
     cursor.execute(asd,(params))
     results = cursor.fetchall()
 
-    return render_template('results.html', players=results)
+    return render_template('results.html', Players=results)
 
 
 
