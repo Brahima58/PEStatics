@@ -251,7 +251,7 @@ def advanced_search():
     params = []
     position = request.form.get("position")
     if position:
-        query += " AND position = %s"
+        asd += " AND position = %s"
         params.append(position)    
     filters = {
         "offensiveawareness": (request.form.get("offensiveawareness_min"), request.form.get("offensiveawareness_max")),
