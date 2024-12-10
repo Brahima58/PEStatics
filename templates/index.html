@@ -321,6 +321,17 @@
                     <button type="submit">Advanced Search</button>
                 </form>
                 <script>
+                    document.getElementById('toggle-options').addEventListener('click', function () {
+                    const optionsDiv = document.getElementById('advanced-options');
+   
+                    if (optionsDiv.style.display === 'none' || optionsDiv.style.display === '') {
+                        optionsDiv.style.display = 'block'; 
+                        this.textContent = 'Hide Advanced Options'; 
+                    } else {
+                        optionsDiv.style.display = 'none';
+                        this.textContent = 'Show Advanced Options'; 
+                    }
+                    });
                     function updateRange(field) {
                         const pos = document.getElementById(`${field}`).value;
                         const min = document.getElementById(`${field}_min`).value;
