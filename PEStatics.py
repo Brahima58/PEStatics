@@ -249,9 +249,11 @@ def advanced_search():
     global cursor
     asd = "SELECT * FROM players WHERE 1=1"
     params = []
-    
+    position = request.form.get("position")
+    if position:
+        query += " AND position = %s"
+        params.append(position)    
     filters = {
-        "position": (request.form.get("position")),
         "offensiveawareness": (request.form.get("offensiveawareness_min"), request.form.get("offensiveawareness_max")),
         "ballcontrol": (request.form.get("ballcontrol_min"), request.form.get("ballcontrol_max")),
         "dribbling": (request.form.get("dribbling_min"), request.form.get("dribbling_max")),
@@ -289,18 +291,15 @@ def advanced_search():
     }
 
 
-    for column, (min_val, max_val,pos) in filters.items():
+    for column, (min_val, max_val) in filters.items():
         min_val = int(min_val) if min_val else 0
         max_val = int(max_val) if max_val else 100
-        pos = str(pos) 
-
-
+        
         if min_val != 0 or max_val != 100:
             asd += f" AND {column} BETWEEN %s AND %s"
-            params.extend([min_val, max_val,pos])
+            params.extend([min_val, max_val])
 
     print("Parameters:", params)
-
 
     cursor.execute(asd,(params))
     results = cursor.fetchall()

@@ -63,6 +63,7 @@
                 <form action="/advanced_search" method="POST">
                     <label for="position">Position:</label>
                     <select name="position" id="position" oninput="updateRange('position')">
+                        <option value="">All Positions</option>
                         <option value="GK">GK</option>
                         <option value="CB">CB</option>
                         <option value="RB">RB</option>
@@ -317,7 +318,7 @@
                 </form>
                 <script>
                     function updateRange(field) {
-                        const pos = document.getElementById(`${field}_min`).value;
+                        const pos = document.getElementById(`${field}`).value;
                         const min = document.getElementById(`${field}_min`).value;
                         const max = document.getElementById(`${field}_max`).value;
                 
