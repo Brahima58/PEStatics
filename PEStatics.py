@@ -44,9 +44,7 @@ def position_calculate(player_data, player_position): #parametreleri döngü dı
                'aggression', 'defensiveengagement', 'gkawareness', 'gkcatch', 
                'gkclearance', 'gkreflexes', 'gkreach', 'speed', 'acceleration', 
                'kickingpower', 'jumping', 'physicalcontact', 'balance', 'stamina','height']
-    print("Player Data:", player_data)
     player_data_dict = {column: player_data.get(column, None) for column in columns} #Her bir columndaki veriyi player_data sözlüğünde tut
-    print("Player Data Dict:", player_data_dict)
     sonuclar = {} #dereceleri bu sözlükte tut
 
     for column in columns: #her bir sütundaki verilerin sapmasını al
@@ -61,7 +59,6 @@ def position_calculate(player_data, player_position): #parametreleri döngü dı
         """, (player_position,))
 
         sonuc = cursor.fetchone() #her bir column için işlem yap
-        print(f"Query Result for {column}: {sonuc}")
         
         average, stdev, min_val, max_val = sonuc #verileri bu isimlerde tut
 
@@ -299,7 +296,6 @@ def advanced_search():
             asd += f" AND {column} BETWEEN %s AND %s"
             params.extend([min_val, max_val])
 
-    print("Parameters:", params)
 
     cursor.execute(asd,(params))
     results = cursor.fetchall()
