@@ -83,24 +83,35 @@
                                 <option value="CF">CF</option>
                             </select>
                         </div>
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Offensive Awareness:</label>
-                            <input type="range" id="offensiveawareness_min" name="offensiveawareness_min" min="0" max="100" value="0" class="form-range p2 yazi" oninput="updateRange('offensiveawareness')">
-                            <input type="range" id="offensiveawareness_max" name="offensiveawareness_max" min="0" max="100" value="100" class="form-range p2 yazi" oninput="updateRange('offensiveawareness')">
-                            <span id="offensiveawareness_display" class="p2 yazi">0 - 100</span>
-                        </div>
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Ball Control:</label>
-                            <input type="range" id="ballcontrol_min" name="ballcontrol_min" min="0" max="100" value="0" class="form-range p2 yazi" oninput="updateRange('ballcontrol')">
-                            <input type="range" id="ballcontrol_max" name="ballcontrol_max" min="0" max="100" value="100" class="form-range p2 yazi" oninput="updateRange('ballcontrol')">
-                            <span id="ballcontrol_display" class="p2 yazi">0 - 100</span>
-                        </div>
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Dribbling:</label>
-                            <input type="range" id="dribbling_min" name="dribbling_min" min="0" max="100" value="0" class="form-range p2 yazi" oninput="updateRange('dribbling')">
-                            <input type="range" id="dribbling_max" name="dribbling_max" min="0" max="100" value="100" class="form-range p2 yazi" oninput="updateRange('dribbling')">
-                            <span id="dribbling_display" class="p2 yazi">0 - 100</span>
-                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card bg-dark text-white">
+                                    <div class="card-header p2 yazi">Offensive</div>
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="mb-3 p2">                                            
+                                                <label class="form-label p2 yazi">Offensive Awareness:</label>
+                                                <input type="range" id="offensiveawareness_min" name="offensiveawareness_min" min="0" max="100" value="0" class="form-range p2 yazi" oninput="updateRange('offensiveawareness')">
+                                                <input type="range" id="offensiveawareness_max" name="offensiveawareness_max" min="0" max="100" value="100" class="form-range p2 yazi" oninput="updateRange('offensiveawareness')">
+                                                <span id="offensiveawareness_display" class="p2 yazi">0 - 100</span>
+                                            </div>
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Ball Control:</label>
+                                                <input type="range" id="ballcontrol_min" name="ballcontrol_min" min="0" max="100" value="0" class="form-range p2 yazi" oninput="updateRange('ballcontrol')">
+                                                <input type="range" id="ballcontrol_max" name="ballcontrol_max" min="0" max="100" value="100" class="form-range p2 yazi" oninput="updateRange('ballcontrol')">
+                                                <span id="ballcontrol_display" class="p2 yazi">0 - 100</span>
+                                            </div>
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Dribbling:</label>
+                                                <input type="range" id="dribbling_min" name="dribbling_min" min="0" max="100" value="0" class="form-range p2 yazi" oninput="updateRange('dribbling')">
+                                                <input type="range" id="dribbling_max" name="dribbling_max" min="0" max="100" value="100" class="form-range p2 yazi" oninput="updateRange('dribbling')">
+                                                <span id="dribbling_display" class="p2 yazi">0 - 100</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>        
                         <div class="mb-3 p2">
                             <label class="form-label p2 yazi">Tight Possession:</label>
                             <input type="range" id="tightpossession_min" name="tightpossession_min" min="0" max="100" value="0" class="form-range p2 yazi" oninput="updateRange('tightpossession')">
