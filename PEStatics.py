@@ -58,6 +58,7 @@ def position_calculate(player_data, player_position): #parametreleri döngü dı
             WHERE position = %s;
         """, (player_position,))
 
+
         sonuc = cursor.fetchone() #her bir column için işlem yap
         
         average, stdev, min_val, max_val = sonuc #verileri bu isimlerde tut
