@@ -96,6 +96,67 @@
                                                 <span id="offensiveawareness_display" class="p2 yazi">0 - 100</span>
                                             </div>
                                             <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Finishing:</label>
+                                                <input type="range" id="finishing_min" name="finishing_min" min="0" max="100" value="0" class="form-range" class="form-range p2 yazi"oninput="updateRange('finishing')">
+                                                <input type="range" id="finishing_max" name="finishing_max" min="0" max="100" value="100" class="form-range" class="form-range p2 yazi"oninput="updateRange('finishing')">
+                                                <span id="finishing_display" class="p2 yazi">0 - 100</span>
+                                            </div>
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Kicking Power:</label>
+                                                <input type="range" id="kickingpower_min" name="kickingpower_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('kickingpower')">
+                                                <input type="range" id="kickingpower_max" name="kickingpower_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('kickingpower')">
+                                                <span id="kickingpower_display"class="p2 yazi">0 - 100</span>
+                                            </div>
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Long Range Shooting:</label>
+                                                <input type="range" id="longrangeshooting_min" name="longrangeshooting_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('longrangeshooting')">
+                                                <input type="range" id="longrangeshooting_max" name="longrangeshooting_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('longrangeshooting')">
+                                                <span id="longrangeshooting_display"class="p2 yazi">0 - 100</span>
+                                            </div>
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Header:</label>
+                                                <input type="range" id="header_min" name="header_min" min="0" max="100" value="0" class="form-range" class="form-range p2 yazi"oninput="updateRange('header')">
+                                                <input type="range" id="header_max" name="header_max" min="0" max="100" value="100" class="form-range" class="form-range p2 yazi"oninput="updateRange('header')">
+                                                <span id="header_display" class="p2 yazi">0 - 100</span>
+                                            </div>                                            
+                                        </div>
+                                    </div>
+                                    <div class="card-header p2 yazi">Defense</div>
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between">    
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Defensive Awareness:</label>
+                                                <input type="range" id="defensiveawareness_min" name="defensiveawareness_min" min="0" max="100" value=0  class="form-range p2 yazi"oninput="updateRange('defensiveawareness')">
+                                                <input type="range" id="defensiveawareness_max" name="defensiveawareness_max" min="0" max="100" value=100 class="form-range p2 yazi"oninput="updateRange('defensiveawareness')">
+                                                <span id="defensiveawareness_display" class="p2 yazi">0 - 100</span>
+                                            </div>
+                                            
+                                           <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Tackling:</label>
+                                                <input type="range" id="tackling_min" name="tackling_min" min="0" max="100" value=0 class="form-range p2 yazi"oninput="updateRange('tackling')">
+                                                <input type="range" id="tackling_max" name="tackling_max" min="0" max="100" value=100 class="form-range p2 yazi"oninput="updateRange('tackling')">
+                                                <span id="tackling_display"class="p2 yazi">0 - 100</span>
+                                            </div>
+                                            
+                                           <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Aggression:</label>
+                                                <input type="range" id="aggression_min" name="aggression_min" min="0" max="100" value=0 class="form-range p2 yazi"oninput="updateRange('aggression')">
+                                                <input type="range" id="aggression_max" name="aggression_max" min="0" max="100" value=100 class="form-range p2 yazi"oninput="updateRange('aggression')">
+                                                <span id="aggression_display"class="p2 yazi">0 - 100</span>
+                                            </div>
+                                            
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Defensive Engagement:</label>
+                                                <input type="range" id="defensiveengagement_min" name="defensiveengagement_min" min="0" max="100" value=0 class="form-range p2 yazi"oninput="updateRange('defensiveengagement')">
+                                                <input type="range" id="defensiveengagement_max" name="defensiveengagement_max" min="0" max="100" value=100 class="form-range p2 yazi"oninput="updateRange('defensiveengagement')">
+                                                <span id="defensiveengagement_display"class="p2 yazi">0 - 100</span>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <div class="card-header p2 yazi">Dribbling</div>
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between">   
+                                            <div class="mb-3 p2">
                                                 <label class="form-label p2 yazi">Ball Control:</label>
                                                 <input type="range" id="ballcontrol_min" name="ballcontrol_min" min="0" max="100" value="0" class="form-range p2 yazi" oninput="updateRange('ballcontrol')">
                                                 <input type="range" id="ballcontrol_max" name="ballcontrol_max" min="0" max="100" value="100" class="form-range p2 yazi" oninput="updateRange('ballcontrol')">
@@ -106,222 +167,167 @@
                                                 <input type="range" id="dribbling_min" name="dribbling_min" min="0" max="100" value="0" class="form-range p2 yazi" oninput="updateRange('dribbling')">
                                                 <input type="range" id="dribbling_max" name="dribbling_max" min="0" max="100" value="100" class="form-range p2 yazi" oninput="updateRange('dribbling')">
                                                 <span id="dribbling_display" class="p2 yazi">0 - 100</span>
+                                            </div>     
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Tight Possession:</label>
+                                                <input type="range" id="tightpossession_min" name="tightpossession_min" min="0" max="100" value="0" class="form-range p2 yazi" oninput="updateRange('tightpossession')">
+                                                <input type="range" id="tightpossession_max" name="tightpossession_max" min="0" max="100" value="100" class="form-range p2 yazi" oninput="updateRange('tightpossession')">
+                                                <span id="tightpossession_display" class="p2 yazi">0 - 100</span>
+                                            </div> 
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Balance:</label>
+                                                <input type="range" id="balance_min" name="balance_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('balance')">
+                                                <input type="range" id="balance_max" name="balance_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('balance')">
+                                                <span id="balance_display"class="p2 yazi">0 - 100</span>
+                                            </div>
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Dribble Speed:</label>
+                                                <input type="range" id="dribblespeed_min" name="dribblespeed_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('dribblespeed')">
+                                                <input type="range" id="dribblespeed_max" name="dribblespeed_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('dribblespeed')">
+                                                <span id="dribblespeed_display"class="p2 yazi">0 - 100</span>
+                                            </div>
+                                            
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Agility:</label>
+                                                <input type="range" id="agility_min" name="agility_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('agility')">
+                                                <input type="range" id="agility_max" name="agility_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('agility')">
+                                                <span id="agility_display"class="p2 yazi">0 - 100</span>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    <div class="card-header p2 yazi">Passing</div>
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between">  
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Low Pass:</label>
+                                                <input type="range" id="lowpass_min" name="lowpass_min" min="0" max="100" value="0" class="form-range"class="form-range p2 yazi" oninput="updateRange('lowpass')">
+                                                <input type="range" id="lowpass_max" name="lowpass_max" min="0" max="100" value="100" class="form-range" class="form-range p2 yazi"oninput="updateRange('lowpass')">
+                                                <span id="lowpass_display" class="p2 yazi">0 - 100</span>
+                                            </div>
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Lofted Pass:</label>
+                                                <input type="range" id="loftedpass_min" name="loftedpass_min" min="0" max="100" value="0" class="form-range" class="form-range p2 yazi"oninput="updateRange('loftedpass')">
+                                                <input type="range" id="loftedpass_max" name="loftedpass_max" min="0" max="100" value="100" class="form-range" class="form-range p2 yazi"oninput="updateRange('loftedpass')">
+                                                <span id="loftedpass_display" class="p2 yazi">0 - 100</span>
+                                            </div>               
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Set Piece Taking:</label>
+                                                <input type="range" id="setpiecetaking_min" name="setpiecetaking_min" min="0" max="100" value="0" class="form-range p2 yazi" oninput="updateRange('setpiecetaking')">
+                                                <input type="range" id="setpiecetaking_max" name="setpiecetaking_max" min="0" max="100" value="100" class="form-range p2 yazi" oninput="updateRange('setpiecetaking')">
+                                                <span id="setpiecetaking_display" class="p2 yazi">0 - 100</span>
+                                            </div>
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Curve:</label>
+                                                <input type="range" id="curve_min" name="curve_min" min="0" max="100" value="0" class="form-range" class="form-range p2 yazi"oninput="updateRange('curve')">
+                                                <input type="range" id="curve_max" name="curve_max" min="0" max="100" value="100" class="form-range" class="form-range p2 yazi"oninput="updateRange('curve')">
+                                                <span id="curve_display" class="p2 yazi">0 - 100</span>
+                                            </div>                       
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Vision:</label>
+                                                <input type="range" id="vision_min" name="vision_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('vision')">
+                                                <input type="range" id="vision_max" name="vision_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('vision')">
+                                                <span id="vision_display"class="p2 yazi">0 - 100</span>
+                                            </div>                                                  
+                                        </div>
+                                    </div>                                                                                                  
+                                    <div class="card-header p2 yazi">Physical</div>
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between"> 
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Speed:</label>
+                                                <input type="range" id="speed_min" name="speed_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('speed')">
+                                                <input type="range" id="speed_max" name="speed_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('speed')">
+                                                <span id="speed_display"class="p2 yazi">0 - 100</span>
+                                            </div>
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Acceleration:</label>
+                                                <input type="range" id="acceleration_min" name="acceleration_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('acceleration')">
+                                                <input type="range" id="acceleration_max" name="acceleration_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('acceleration')">
+                                                <span id="acceleration_display"class="p2 yazi">0 - 100</span>
+                                            </div>                                                                                                             
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Jumping:</label>
+                                                <input type="range" id="jumping_min" name="jumping_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('jumping')">
+                                                <input type="range" id="jumping_max" name="jumping_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('jumping')">
+                                                <span id="jumping_display"class="p2 yazi">0 - 100</span>
+                                            </div>
+                                            
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Physical Contact:</label>
+                                                <input type="range" id="physicalcontact_min" name="physicalcontact_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('physicalcontact')">
+                                                <input type="range" id="physicalcontact_max" name="physicalcontact_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('physicalcontact')">
+                                                <span id="physicalcontact_display"class="p2 yazi">0 - 100</span>
+                                            </div>                                                                                        
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Stamina:</label>
+                                                <input type="range" id="stamina_min" name="stamina_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('stamina')">
+                                                <input type="range" id="stamina_max" name="stamina_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('stamina')">
+                                                <span id="stamina_display"class="p2 yazi">0 - 100</span>
+                                            </div>
+                                        
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Precision:</label>
+                                                <input type="range" id="precision_min" name="precision_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('precision')">
+                                                <input type="range" id="precision_max" name="precision_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('precision')">
+                                                <span id="precision_display"class="p2 yazi">0 - 100</span>
+                                            </div>
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Diligence:</label>
+                                                <input type="range" id="diligence_min" name="diligence_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('diligence')">
+                                                <input type="range" id="diligence_max" name="diligence_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('diligence')">
+                                                <span id="diligence_display"class="p2 yazi">0 - 100</span>
+                                            </div>
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Obstinacy:</label>
+                                                <input type="range" id="obstinacy_min" name="obstinacy_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('obstinacy')">
+                                                <input type="range" id="obstinacy_max" name="obstinacy_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('obstinacy')">
+                                                <span id="obstinacy_display"class="p2 yazi">0 - 100</span>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>        
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Tight Possession:</label>
-                            <input type="range" id="tightpossession_min" name="tightpossession_min" min="0" max="100" value="0" class="form-range p2 yazi" oninput="updateRange('tightpossession')">
-                            <input type="range" id="tightpossession_max" name="tightpossession_max" min="0" max="100" value="100" class="form-range p2 yazi" oninput="updateRange('tightpossession')">
-                            <span id="tightpossession_display" class="p2 yazi">0 - 100</span>
-                        </div>
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Low Pass:</label>
-                            <input type="range" id="lowpass_min" name="lowpass_min" min="0" max="100" value="0" class="form-range"class="form-range p2 yazi" oninput="updateRange('lowpass')">
-                            <input type="range" id="lowpass_max" name="lowpass_max" min="0" max="100" value="100" class="form-range" class="form-range p2 yazi"oninput="updateRange('lowpass')">
-                            <span id="lowpass_display" class="p2 yazi">0 - 100</span>
-                        </div>
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Lofted Pass:</label>
-                            <input type="range" id="loftedpass_min" name="loftedpass_min" min="0" max="100" value="0" class="form-range" class="form-range p2 yazi"oninput="updateRange('loftedpass')">
-                            <input type="range" id="loftedpass_max" name="loftedpass_max" min="0" max="100" value="100" class="form-range" class="form-range p2 yazi"oninput="updateRange('loftedpass')">
-                            <span id="loftedpass_display" class="p2 yazi">0 - 100</span>
-                        </div>
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Finishing:</label>
-                            <input type="range" id="finishing_min" name="finishing_min" min="0" max="100" value="0" class="form-range" class="form-range p2 yazi"oninput="updateRange('finishing')">
-                            <input type="range" id="finishing_max" name="finishing_max" min="0" max="100" value="100" class="form-range" class="form-range p2 yazi"oninput="updateRange('finishing')">
-                            <span id="finishing_display" class="p2 yazi">0 - 100</span>
-                        </div>
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Header:</label>
-                            <input type="range" id="header_min" name="header_min" min="0" max="100" value="0" class="form-range" class="form-range p2 yazi"oninput="updateRange('header')">
-                            <input type="range" id="header_max" name="header_max" min="0" max="100" value="100" class="form-range" class="form-range p2 yazi"oninput="updateRange('header')">
-                            <span id="header_display" class="p2 yazi">0 - 100</span>
-                        </div>
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Set Piece Taking:</label>
-                            <input type="range" id="setpiecetaking_min" name="setpiecetaking_min" min="0" max="100" value="0" class="form-range p2 yazi" oninput="updateRange('setpiecetaking')">
-                            <input type="range" id="setpiecetaking_max" name="setpiecetaking_max" min="0" max="100" value="100" class="form-range p2 yazi" oninput="updateRange('setpiecetaking')">
-                            <span id="setpiecetaking_display" class="p2 yazi">0 - 100</span>
-                        </div>
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Curve:</label>
-                            <input type="range" id="curve_min" name="curve_min" min="0" max="100" value="0" class="form-range" class="form-range p2 yazi"oninput="updateRange('curve')">
-                            <input type="range" id="curve_max" name="curve_max" min="0" max="100" value="100" class="form-range" class="form-range p2 yazi"oninput="updateRange('curve')">
-                            <span id="curve_display" class="p2 yazi">0 - 100</span>
-                        </div>                        
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Defensive Awareness:</label>
-                            <input type="range" id="defensiveawareness_min" name="defensiveawareness_min" min="0" max="100" value=0  class="form-range p2 yazi"oninput="updateRange('defensiveawareness')">
-                            <input type="range" id="defensiveawareness_max" name="defensiveawareness_max" min="0" max="100" value=100 class="form-range p2 yazi"oninput="updateRange('defensiveawareness')">
-                            <span id="defensiveawareness_display" class="p2 yazi">0 - 100</span>
-                        </div>
-                        
-                       <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Tackling:</label>
-                            <input type="range" id="tackling_min" name="tackling_min" min="0" max="100" value=0 class="form-range p2 yazi"oninput="updateRange('tackling')">
-                            <input type="range" id="tackling_max" name="tackling_max" min="0" max="100" value=100 class="form-range p2 yazi"oninput="updateRange('tackling')">
-                            <span id="tackling_display"class="p2 yazi">0 - 100</span>
-                        </div>
-                        
-                       <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Aggression:</label>
-                            <input type="range" id="aggression_min" name="aggression_min" min="0" max="100" value=0 class="form-range p2 yazi"oninput="updateRange('aggression')">
-                            <input type="range" id="aggression_max" name="aggression_max" min="0" max="100" value=100 class="form-range p2 yazi"oninput="updateRange('aggression')">
-                            <span id="aggression_display"class="p2 yazi">0 - 100</span>
-                        </div>
-                        
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Defensive Engagement:</label>
-                            <input type="range" id="defensiveengagement_min" name="defensiveengagement_min" min="0" max="100" value=0 class="form-range p2 yazi"oninput="updateRange('defensiveengagement')">
-                            <input type="range" id="defensiveengagement_max" name="defensiveengagement_max" min="0" max="100" value=100 class="form-range p2 yazi"oninput="updateRange('defensiveengagement')">
-                            <span id="defensiveengagement_display"class="p2 yazi">0 - 100</span>
-                        </div>
-                        
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">GK Awareness:</label>
-                            <input type="range" id="gkawareness_min" name="gkawareness_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('gkawareness')">
-                            <input type="range" id="gkawareness_max" name="gkawareness_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('gkawareness')">
-                            <span id="gkawareness_display"class="p2 yazi">0 - 100</span>
-                        </div>
-                        
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">GK Catch:</label>
-                            <input type="range" id="gkcatch_min" name="gkcatch_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('gkcatch')">
-                            <input type="range" id="gkcatch_max" name="gkcatch_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('gkcatch')">
-                            <span id="gkcatch_display"class="p2 yazi">0 - 100</span>
-                        </div>
-                        
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">GK Clearance:</label>
-                            <input type="range" id="gkclearance_min" name="gkclearance_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('gkclearance')">
-                            <input type="range" id="gkclearance_max" name="gkclearance_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('gkclearance')">
-                            <span id="gkclearance_display"class="p2 yazi">0 - 100</span>
-                        </div>
-                        
-                       <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">GK Reflexes:</label>
-                            <input type="range" id="gkreflexes_min" name="gkreflexes_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('gkreflexes')">
-                            <input type="range" id="gkreflexes_max" name="gkreflexes_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('gkreflexes')">
-                            <span id="gkreflexes_display"class="p2 yazi">0 - 100</span>
-                        </div>
-                        
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">GK Reach:</label>
-                            <input type="range" id="gkreach_min" name="gkreach_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('gkreach')">
-                            <input type="range" id="gkreach_max" name="gkreach_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('gkreach')">
-                            <span id="gkreach_display"class="p2 yazi">0 - 100</span>
-                        </div>
-                        
-                       <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Speed:</label>
-                            <input type="range" id="speed_min" name="speed_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('speed')">
-                            <input type="range" id="speed_max" name="speed_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('speed')">
-                            <span id="speed_display"class="p2 yazi">0 - 100</span>
-                        </div>
-                        
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Acceleration:</label>
-                            <input type="range" id="acceleration_min" name="acceleration_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('acceleration')">
-                            <input type="range" id="acceleration_max" name="acceleration_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('acceleration')">
-                            <span id="acceleration_display"class="p2 yazi">0 - 100</span>
-                        </div>
-                        
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Kicking Power:</label>
-                            <input type="range" id="kickingpower_min" name="kickingpower_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('kickingpower')">
-                            <input type="range" id="kickingpower_max" name="kickingpower_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('kickingpower')">
-                            <span id="kickingpower_display"class="p2 yazi">0 - 100</span>
-                        </div>
-                        
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Jumping:</label>
-                            <input type="range" id="jumping_min" name="jumping_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('jumping')">
-                            <input type="range" id="jumping_max" name="jumping_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('jumping')">
-                            <span id="jumping_display"class="p2 yazi">0 - 100</span>
-                        </div>
-                        
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Physical Contact:</label>
-                            <input type="range" id="physicalcontact_min" name="physicalcontact_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('physicalcontact')">
-                            <input type="range" id="physicalcontact_max" name="physicalcontact_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('physicalcontact')">
-                            <span id="physicalcontact_display"class="p2 yazi">0 - 100</span>
-                        </div>
-                        
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Balance:</label>
-                            <input type="range" id="balance_min" name="balance_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('balance')">
-                            <input type="range" id="balance_max" name="balance_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('balance')">
-                            <span id="balance_display"class="p2 yazi">0 - 100</span>
-                        </div>
-                        
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Stamina:</label>
-                            <input type="range" id="stamina_min" name="stamina_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('stamina')">
-                            <input type="range" id="stamina_max" name="stamina_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('stamina')">
-                            <span id="stamina_display"class="p2 yazi">0 - 100</span>
-                        </div>
-                    
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Precision:</label>
-                            <input type="range" id="precision_min" name="precision_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('precision')">
-                            <input type="range" id="precision_max" name="precision_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('precision')">
-                            <span id="precision_display"class="p2 yazi">0 - 100</span>
-                        </div>
-                        
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Long Range Shooting:</label>
-                            <input type="range" id="longrangeshooting_min" name="longrangeshooting_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('longrangeshooting')">
-                            <input type="range" id="longrangeshooting_max" name="longrangeshooting_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('longrangeshooting')">
-                            <span id="longrangeshooting_display"class="p2 yazi">0 - 100</span>
-                        </div>
-                        
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Diligence:</label>
-                            <input type="range" id="diligence_min" name="diligence_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('diligence')">
-                            <input type="range" id="diligence_max" name="diligence_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('diligence')">
-                            <span id="diligence_display"class="p2 yazi">0 - 100</span>
-                        </div>
-                        
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Dribble Speed:</label>
-                            <input type="range" id="dribblespeed_min" name="dribblespeed_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('dribblespeed')">
-                            <input type="range" id="dribblespeed_max" name="dribblespeed_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('dribblespeed')">
-                            <span id="dribblespeed_display"class="p2 yazi">0 - 100</span>
-                        </div>
-                        
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Agility:</label>
-                            <input type="range" id="agility_min" name="agility_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('agility')">
-                            <input type="range" id="agility_max" name="agility_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('agility')">
-                            <span id="agility_display"class="p2 yazi">0 - 100</span>
-                        </div>
-                        
-                       <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Vision:</label>
-                            <input type="range" id="vision_min" name="vision_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('vision')">
-                            <input type="range" id="vision_max" name="vision_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('vision')">
-                            <span id="vision_display"class="p2 yazi">0 - 100</span>
-                        </div>
-                        
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Obstinacy:</label>
-                            <input type="range" id="obstinacy_min" name="obstinacy_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('obstinacy')">
-                            <input type="range" id="obstinacy_max" name="obstinacy_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('obstinacy')">
-                            <span id="obstinacy_display"class="p2 yazi">0 - 100</span>
-                        </div>
-                        
-                        <div class="mb-3 p2">
-                            <label class="form-label p2 yazi">Goalkeeping:</label>
-                            <input type="range" id="goalkeeping_min" name="goalkeeping_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('goalkeeping')">
-                            <input type="range" id="goalkeeping_max" name="goalkeeping_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('goalkeeping')">
-                            <span id="goalkeeping_display"class="p2 yazi">0 - 100</span>
-                        </div>
-                  
+                                    <div class="card-header p2 yazi">Goal Keeping</div>
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between">  
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">GK Awareness:</label>
+                                                <input type="range" id="gkawareness_min" name="gkawareness_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('gkawareness')">
+                                                <input type="range" id="gkawareness_max" name="gkawareness_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('gkawareness')">
+                                                <span id="gkawareness_display"class="p2 yazi">0 - 100</span>
+                                            </div>
+                                            
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">GK Catch:</label>
+                                                <input type="range" id="gkcatch_min" name="gkcatch_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('gkcatch')">
+                                                <input type="range" id="gkcatch_max" name="gkcatch_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('gkcatch')">
+                                                <span id="gkcatch_display"class="p2 yazi">0 - 100</span>
+                                            </div>
+                                            
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">GK Clearance:</label>
+                                                <input type="range" id="gkclearance_min" name="gkclearance_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('gkclearance')">
+                                                <input type="range" id="gkclearance_max" name="gkclearance_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('gkclearance')">
+                                                <span id="gkclearance_display"class="p2 yazi">0 - 100</span>
+                                            </div>
+                                            
+                                           <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">GK Reflexes:</label>
+                                                <input type="range" id="gkreflexes_min" name="gkreflexes_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('gkreflexes')">
+                                                <input type="range" id="gkreflexes_max" name="gkreflexes_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('gkreflexes')">
+                                                <span id="gkreflexes_display"class="p2 yazi">0 - 100</span>
+                                            </div>
+                                            
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">GK Reach:</label>
+                                                <input type="range" id="gkreach_min" name="gkreach_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('gkreach')">
+                                                <input type="range" id="gkreach_max" name="gkreach_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('gkreach')">
+                                                <span id="gkreach_display"class="p2 yazi">0 - 100</span>
+                                            </div>   
+                                            <div class="mb-3 p2">
+                                                <label class="form-label p2 yazi">Goalkeeping:</label>
+                                                <input type="range" id="goalkeeping_min" name="goalkeeping_min" min="0" max="100" value=0 class="form-range p2 yazi" oninput="updateRange('goalkeeping')">
+                                                <input type="range" id="goalkeeping_max" name="goalkeeping_max" min="0" max="100" value=100 class="form-range p2 yazi" oninput="updateRange('goalkeeping')">
+                                                <span id="goalkeeping_display"class="p2 yazi">0 - 100</span>
+                                            </div>                                                           
                     <button type="submit"  class="btn btn-outline-light mt-3 yazi">Advanced Search</button>
                 </form>      
                 <script>
