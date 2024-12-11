@@ -50,20 +50,17 @@
 <body>
     <h1 class="h2 numara">PEStatics</h1>
     <div class="container">
+        <div class="row justify-content-center">
             <div class="col-md-6">
                 <form action="/search" method="POST">
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label p2 yazi">Player Name</label>
                         <input type="text" name="oyuncu_adi" id="exampleInputPassword1" class="form-control p3 yazi" placeholder="Enter player name:" required>
                     </div>
-                    <div class="text-center"> 
-                        <button type="submit" class="btn btn-info w-100 p1 yazi">Search</button>
-                    </div>
+                    <button type="submit" class="btn btn-info w-100 p1 yazi">Search</button>
                 </form>
 
-                <div class="text-center"> 
-                    <button id="toggle-options" class="btn btn-info w-100 mt-3 p1 yazi">Show Advanced Options</button>
-                </div>
+                <button id="toggle-options" class="btn btn-info w-100 mt-3 p1 yazi">Show Advanced Options</button>
 
                 <div id="advanced-options">
                     <form action="/advanced_search" method="POST">
@@ -336,9 +333,7 @@
                                 </div>
                             </div>
                         </div>                                                                               
-                        <div class="text-center"> 
-                            <button type="submit" class="btn btn-outline-light mt-3 yazi">Advanced Search</button>
-                        </div>
+                    <button type="submit"  class="btn btn-outline-light mt-3 yazi">Advanced Search</button>
                 </form>      
                 <script>
                     document.getElementById('toggle-options').addEventListener('click', function () {
@@ -363,11 +358,10 @@
                 </script>
             </div>
         </div>
-    <div class="text-center"> 
-        <a href="/random_player">
-            <button type="button" class="btn btn-outline-info mt-3 yazi">Jump a Random Player!</button>
-        </a>
     </div>
+    <a href="/random_player">
+        <button type="button" class="btn btn-outline-info mt-3 yazi">Jump a Random Player!</button>
+    </a>
 </div>    
 </body>
 </html>
