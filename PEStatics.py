@@ -235,7 +235,7 @@ def search():
 
 
     cursor.execute("""SELECT playerid, PlayerName, overallrating, Position, Package 
-                   FROM Players WHERE PlayerName ILIKE %s;""", ['%' + oyuncu_adi + '%'])
+                   FROM Players WHERE unaccent(PlayerName) ILIKE unaccent(%s);""", ['%' + oyuncu_adi + '%'])
                   #Türkçe vb. karakterler için standartlaştır
 
     players = cursor.fetchall()
