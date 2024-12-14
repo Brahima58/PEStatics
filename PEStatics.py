@@ -245,17 +245,16 @@ def search():
 @app.route('/advanced_search', methods=['POST'])
 def advanced_search():
     global cursor
-    # Temel sorgu
+
     query = "SELECT * FROM players WHERE 1=1"
     params = []
 
-    # Pozisyon filtresi
+
     position = request.form.get("position")
     if position:
         query += " AND position = %s"
         params.append(position)
 
-    # Oynama stili filtresi
     playingstyle = request.form.get("playingstyle")
     if playingstyle:
         query += " AND playingstyle = %s"

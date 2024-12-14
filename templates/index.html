@@ -399,7 +399,7 @@
                             this.textContent = 'Show Advanced Options';
                         }
                     });
-            
+                
                     function updateRange(field) {
                         const min = document.getElementById(`${field}_min`).value;
                         const max = document.getElementById(`${field}_max`).value;
@@ -408,7 +408,18 @@
                         }
                         document.getElementById(`${field}_display`).textContent = `${min} - ${max}`;
                     }
+                
+                    document.querySelector("form").addEventListener("reset", function() {
+                        document.querySelectorAll("input[type='range']").forEach(function(input) {
+                            input.value = input.defaultValue;
+                        });
+                
+                        document.querySelectorAll("span[id$='_display']").forEach(function(span) {
+                            span.innerHTML = "0 - 100";
+                        });
+                    });
                 </script>
+                
             </div>
             <a href="/random_player">
                 <button type="button" class="btn btn-outline-info mt-3 yazi">Jump a Random Player!</button>
