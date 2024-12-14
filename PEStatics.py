@@ -261,12 +261,9 @@ def advanced_search():
         query += " AND playingstyle = %s"
         params.append(playingstyle)
 
-    cosine_value = request.form.get("cosine_value")  # Burada cosine_value'yu request'ten alıyoruz
     cosinesimilarity = request.form.get("cosinesimilarity")
-
-    if cosine_value and cosinesimilarity:
-        cosine_value = float(cosine_value)  # CosineSimilarity değeri sayıya dönüştürülüyor
-
+    cosine_value = request.form.get("cosine_value")
+    if cosinesimilarity:
         # Veritabanından min ve max cosine similarity değerlerini al
         cursor.execute("""
             SELECT 
@@ -278,32 +275,25 @@ def advanced_search():
         result = cursor.fetchone()
 
         if result:
-            min_val, max_val = result['min_val'], result['max_val']
-
             # CosineSimilarity yüzdesini hesapla
+            percentage = (cosine_value - min_val) / (max_val - min_val)
 
             # Yüzdeye göre sınıflandırma
-            similarity_ranges = {
-                "cokkotu": (0.0, 0.1),
-                "kotu": (0.1, 0.3),
-                "ortalama": (0.3, 0.5),
-                "iyi": (0.5, 0.7),
-                "cokiyi": (0.7, 0.8),
-                "mukemmel": (0.8, 1.0),
-            }
+            if percentage <= 0.1:
+                similarity_class = "cokkotu"
+            elif percentage <= 0.3:
+                similarity_class = "kotu"
+            elif percentage <= 0.5:
+                similarity_class = "ortalama"
+            elif percentage <= 0.7:
+                similarity_class = "iyi"
+            elif percentage <= 0.8:
+                similarity_class = "cokiyi"
+            else:
+                similarity_class = "mukemmel"
 
-            # Seçilen similarity_class'a göre aralığı al
-            if cosinesimilarity in similarity_ranges:
-                lower_percentage, upper_percentage = similarity_ranges[cosinesimilarity]
-
-                # CosineSimilarity için min ve max değerleri hesapla
-                range_min = min_val + (max_val - min_val) * lower_percentage
-                range_max = min_val + (max_val - min_val) * upper_percentage
-
-                # CosineSimilarity için sorgu ekle
-                query += " AND CosineSimilarity BETWEEN %s AND %s"
-                params.append(range_min)
-                params.append(range_max)
+            query += " AND CosineSimilarity BETWEEN %s AND %s"
+            params.append([similarity_class])
 
     filters = {
         "offensiveawareness": (request.form.get("offensiveawareness_min"), request.form.get("offensiveawareness_max")),
