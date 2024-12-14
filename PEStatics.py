@@ -241,6 +241,7 @@ def search():
     players = cursor.fetchall()
     
     return render_template('players.html', Players=players)
+
 @app.route('/advanced_search', methods=['POST'])
 def advanced_search():
     global cursor
@@ -259,6 +260,22 @@ def advanced_search():
     if playingstyle:
         query += " AND playingstyle = %s"
         params.append(playingstyle)
+
+    cosinesimilarity = request.form.get("cosinesimilarity")
+    if cosinesimilarity:
+        similarity_ranges = {
+            "cokkotu": (0.0, 0.1),
+            "kotu": (0.1, 0.3),
+            "ortalama": (0.3, 0.5),
+            "iyi": (0.5, 0.7),
+            "cokiyi": (0.7, 0.8),
+            "mukemmel": (0.8, 1.0),
+        }
+        if cosinesimilarity in similarity_ranges:
+            min_val, max_val = similarity_ranges[cosinesimilarity]
+            query += " AND CosineSimilarity BETWEEN %s AND %s"
+            params.extend([min_val, max_val])
+
     filters = {
         "offensiveawareness": (request.form.get("offensiveawareness_min"), request.form.get("offensiveawareness_max")),
         "ballcontrol": (request.form.get("ballcontrol_min"), request.form.get("ballcontrol_max")),
