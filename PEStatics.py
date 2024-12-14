@@ -263,18 +263,42 @@ def advanced_search():
 
     cosinesimilarity = request.form.get("cosinesimilarity")
     if cosinesimilarity:
-        similarity_ranges = {
-            "cokkotu": (0.0, 0.1),
-            "kotu": (0.1, 0.3),
-            "ortalama": (0.3, 0.5),
-            "iyi": (0.5, 0.7),
-            "cokiyi": (0.7, 0.8),
-            "mukemmel": (0.8, 1.0),
-        }
-        if cosinesimilarity in similarity_ranges:
-            min_val, max_val = similarity_ranges[cosinesimilarity]
-            query += " AND CosineSimilarity BETWEEN %s AND %s"
-            params.extend([min_val, max_val])
+        # Veritabanından min ve max cosine similarity değerlerini al
+        cursor.execute("""
+            SELECT 
+                MIN(CosineSimilarity) AS min_val,
+                MAX(CosineSimilarity) AS max_val
+            FROM Players
+            WHERE Position = %s;
+        """, (position,))
+        result = cursor.fetchone()
+
+        if result:
+            min_val, max_val = result['min_val'], result['max_val']
+
+            # CosineSimilarity yüzdesini hesapla
+
+            # Yüzdeye göre sınıflandırma
+            similarity_ranges = {
+                "cokkotu": (0.0, 0.1),
+                "kotu": (0.1, 0.3),
+                "ortalama": (0.3, 0.5),
+                "iyi": (0.5, 0.7),
+                "cokiyi": (0.7, 0.8),
+                "mukemmel": (0.8, 1.0),
+            }
+
+            # Seçilen similarity_class'a göre aralığı al
+            if cosinesimilarity in similarity_ranges:
+                lower_percentage, upper_percentage = similarity_ranges[cosinesimilarity]
+
+                # CosineSimilarity için min ve max değerleri hesapla
+                range_min = min_val + (max_val - min_val) * lower_percentage
+                range_max = min_val + (max_val - min_val) * upper_percentage
+
+                # Sorguya ekle
+                query += " AND CosineSimilarity BETWEEN %s AND %s"
+                params.extend([range_min, range_max])
 
     filters = {
         "offensiveawareness": (request.form.get("offensiveawareness_min"), request.form.get("offensiveawareness_max")),
