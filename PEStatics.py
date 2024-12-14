@@ -261,15 +261,20 @@ def advanced_search():
         query += " AND playingstyle = %s"
         params.append(playingstyle)
 
-    cosine_value = float(request.form.get("cosine_value"))  # Cosine value'yu formdan al
-
-    # Cosine similarity sınıfını hesapla
-    similarity_class = cosinesim_class(position, cosine_value)
-
-    if similarity_class:
-        query += " AND CosineSimilarity = %s"
-        params.append(similarity_class)
-
+    cosinesimilarity = request.form.get("cosinesimilarity")
+    if cosinesimilarity:
+        similarity_ranges = {
+            "cokkotu": (-0.5, -0.2),
+            "kotu": (-0.1, 0.0),
+            "ortalama": (0.0, 0.1),
+            "iyi": (0.1, 0.3),
+            "cokiyi": (0.3, 0.5),
+            "mukemmel": (0.5, 1.0),
+        }
+        if cosinesimilarity in similarity_ranges:
+            min_val, max_val = similarity_ranges[cosinesimilarity]
+            query += " AND CosineSimilarity BETWEEN %s AND %s"
+            params.extend([min_val, max_val])
 
     filters = {
         "offensiveawareness": (request.form.get("offensiveawareness_min"), request.form.get("offensiveawareness_max")),
