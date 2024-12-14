@@ -272,9 +272,10 @@ def advanced_search():
             FROM Players
             WHERE Position = %s;
         """, (position,))
-        result = cursor.fetchone()
+        sonuc = cursor.fetchone()
+        min_val, max_val = sonuc
 
-        if result:
+        if sonuc:
             # CosineSimilarity yüzdesini hesapla
             percentage = (cosine_value - min_val) / (max_val - min_val)
 
