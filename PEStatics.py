@@ -264,9 +264,9 @@ def advanced_search():
     cosinesimilarity = request.form.get("cosinesimilarity")
     if cosinesimilarity:
         similarity_ranges = {
-            "cokkotu": (-0.5, -0.2),
-            "kotu": (-0.1, 0.0),
-            "ortalama": (0.0, 0.1),
+            "cokkotu": (-0.5, -0.3),
+            "kotu": (-0.3, -0.1),
+            "ortalama": (-0.1, 0.1),
             "iyi": (0.1, 0.3),
             "cokiyi": (0.3, 0.5),
             "mukemmel": (0.5, 1.0),
