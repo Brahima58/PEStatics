@@ -261,40 +261,15 @@ def advanced_search():
         query += " AND playingstyle = %s"
         params.append(playingstyle)
 
-    cosinesimilarity = request.form.get("cosinesimilarity")
-    cosine_value = request.form.get("cosine_value")
-    if cosinesimilarity:
-        # Veritabanından min ve max cosine similarity değerlerini al
-        cursor.execute("""
-            SELECT 
-                MIN(CosineSimilarity) AS min_val,
-                MAX(CosineSimilarity) AS max_val
-            FROM Players
-            WHERE Position = %s;
-        """, (position,))
-        sonuc = cursor.fetchone()
-        min_val, max_val = sonuc
+    cosine_value = float(request.form.get("cosine_value"))  # Cosine value'yu formdan al
 
-        if sonuc:
-            # CosineSimilarity yüzdesini hesapla
-            percentage = (cosine_value - min_val) / (max_val - min_val)
+    # Cosine similarity sınıfını hesapla
+    similarity_class = cosinesim_class(position, cosine_value)
 
-            # Yüzdeye göre sınıflandırma
-            if percentage <= 0.1:
-                similarity_class = "cokkotu"
-            elif percentage <= 0.3:
-                similarity_class = "kotu"
-            elif percentage <= 0.5:
-                similarity_class = "ortalama"
-            elif percentage <= 0.7:
-                similarity_class = "iyi"
-            elif percentage <= 0.8:
-                similarity_class = "cokiyi"
-            else:
-                similarity_class = "mukemmel"
+    if similarity_class:
+        query += " AND CosineSimilarity = %s"
+        params.append(similarity_class)
 
-            query += " AND CosineSimilarity BETWEEN %s AND %s"
-            params.append([similarity_class])
 
     filters = {
         "offensiveawareness": (request.form.get("offensiveawareness_min"), request.form.get("offensiveawareness_max")),
