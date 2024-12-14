@@ -241,16 +241,24 @@ def search():
     players = cursor.fetchall()
     
     return render_template('players.html', Players=players)
-
 @app.route('/advanced_search', methods=['POST'])
 def advanced_search():
     global cursor
-    asd = "SELECT * FROM players WHERE 1=1"
+    # Temel sorgu
+    query = "SELECT * FROM players WHERE 1=1"
     params = []
+
+    # Pozisyon filtresi
     position = request.form.get("position")
     if position:
-        asd += " AND position = %s"
-        params.append(position)    
+        query += " AND position = %s"
+        params.append(position)
+
+    # Oynama stili filtresi
+    playingstyle = request.form.get("playingstyle")
+    if playingstyle:
+        query += " AND playingstyle = %s"
+        params.append(playingstyle)
     filters = {
         "offensiveawareness": (request.form.get("offensiveawareness_min"), request.form.get("offensiveawareness_max")),
         "ballcontrol": (request.form.get("ballcontrol_min"), request.form.get("ballcontrol_max")),
@@ -290,15 +298,15 @@ def advanced_search():
 
 
     for column, (min_val, max_val) in filters.items():
-        min_val = int(min_val) if min_val else 0
-        max_val = int(max_val) if max_val else 100
-        
-        if min_val != 0 or max_val != 100:
-            asd += f" AND {column} BETWEEN %s AND %s"
+        if min_val or max_val:
+            min_val = int(min_val) if min_val else 0
+            max_val = int(max_val) if max_val else 100
+
+            query += f" AND {column} BETWEEN %s AND %s"
             params.extend([min_val, max_val])
 
-
-    cursor.execute(asd,(params))
+    # Sorguyu çalıştır
+    cursor.execute(query, params)
     results = cursor.fetchall()
 
     return render_template('results.html', Players=results)
