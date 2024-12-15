@@ -259,7 +259,62 @@ def advanced_search():
     if playingstyle:
         query += " AND playingstyle = %s"
         params.append(playingstyle)
+    
+    selected_package = request.args.get('package', None)
 
+    if selected_package == "Base":
+        query += " AND package = 'Base'"
+
+    elif selected_package == "POTW": 
+        query += " AND package LIKE %s AND package LIKE %s"
+        params.append('%POTW%')
+        params.append('%POTM%')
+
+    elif "BigTime" in selected_package:  
+        query += " AND package LIKE %s"
+        params.append('%Big Time%') 
+
+    elif "ShowTime" in selected_package: 
+        query += " AND package LIKE %s"
+        params.append('%Show Time%') 
+
+    elif "Selection" in selected_package:  
+        query += " AND package LIKE %s AND package LIKE %s"
+        params.append('%Selection%') 
+        params.append('%Choice%') 
+
+    elif "Packs" in selected_package:  
+        query += " AND package LIKE %s"
+        params.append('%Pack%') 
+
+    elif "Campaign" in selected_package:  
+        query += " AND package LIKE %s AND package LIKE %s AND package LIKE %s"
+        params.append('%Campaign%') 
+        params.append('%Bonus%') 
+        params.append('%Daily%')
+        
+    elif "Others" in selected_package: 
+        query += """
+            AND package NOT LIKE %s 
+            AND package NOT LIKE %s 
+            AND package NOT LIKE %s 
+            AND package NOT LIKE %s 
+            AND package NOT LIKE %s 
+            AND package NOT LIKE %s 
+            AND package NOT LIKE %s 
+            AND package NOT LIKE %s
+        """
+        params.extend([
+            '%POTW%', 
+            '%POTM%', 
+            '%Big Time%', 
+            '%Show Time%', 
+            '%Selection%', 
+            '%Choice%', 
+            '%Pack%', 
+            '%Campaign%'
+        ])
+ 
     cosinesimilarity = request.form.get("cosinesimilarity")
     if cosinesimilarity:
         similarity_ranges = {

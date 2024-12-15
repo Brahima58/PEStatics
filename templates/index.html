@@ -65,6 +65,20 @@
                 <div id="advanced-options">
                     <form action="/advanced_search" method="POST">
                         <div class="mb-3">
+                            <label for="package" class="form-label p2 yazi">Card Type:</label>
+                            <select name="package" id="package" class="form-select p2 yazi">
+                                <option value="">Any Type</option>
+                                <option value="Base">Base</option>
+                                <option value="BigTime">Big Time</option>
+                                <option value="ShowTime">Show Time</option>
+                                <option value="Selection">Selections</option>
+                                <option value="Packs">Pack Players</option>
+                                <option value="Campaign">Campaign and Bonus Players</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
                             <label for="position" class="form-label p2 yazi">Position:</label>
                             <select name="position" id="position" class="form-select p2 yazi">
                                 <option value="">All Positions</option>
