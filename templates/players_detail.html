@@ -258,10 +258,14 @@
 
                         
 
-                        <polygon id="stats-hexagon" points="{{ 74 + combine_data['longrangeshooting'] * 50 }},{{ 39 + combine_data['vision'] * 50 }} 
-                        {{ 74 + player_data['diligence'] * 50 }},{{ 52 + player_data['defensiveawareness'] * 50 }} 
-                        {{ 74 + player_data['dribblespeed'] * 50 }},{{ 39 + combine_data['goalkeeping'] * 50 }}"  style="fill: #eee; fill-opacity: 0.5; stroke-opacity: 0.8; stroke: #383435;"/>
-
+                        <polygon id="stats-hexagon" points="
+                        {{ 74 + (combine_data['longrangeshooting'] - 50) }},
+                        {{ 39 + (combine_data['vision'] - 50) }},
+                        {{ 74 + (player_data['diligence'] - 50) }},
+                        {{ 52 + (player_data['defensiveawareness'] - 50) }},
+                        {{ 74 + (player_data['dribblespeed'] - 50) }},
+                        {{ 39 + (combine_data['goalkeeping'] - 50) }}"
+                        style="fill: #eee; fill-opacity: 0.5; stroke-opacity: 0.8; stroke: #383435;" />
                         <text x="61" y="18" font-size="13" class="p3 yazi">SHOT</text>
                         <text x="123" y="47" font-size="13" class="p3 yazi">PASS</text>
                         <text x="123" y="112" font-size="13" class="p3 yazi">STR</text>
