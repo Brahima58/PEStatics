@@ -251,19 +251,23 @@
                         <polygon points="49,61.25 74,49 99,61.25 99,86.5 74,99 49,86.5" style="fill: transparent; stroke: rgb(13, 202, 240); stroke-width: 1"></polygon>
                         
 
-                        <line x1="74" y1="24" x2="74" y2="124" style="stroke: rgb(13, 202, 240); stroke-width: 0.5"></line>
-                        <line x1="24" y1="49" x2="124" y2="99" style="stroke:rgb(13, 202, 240); stroke-width: 0.5"></line>
-                        <line x1="24" y1="99" x2="124" y2="49" style="stroke: rgb(13, 202, 240); stroke-width: 0.5"></line>
+                        <line x1="74" y1="24" x2="24" y2="49" style="stroke: rgb(13, 202, 240); stroke-width: 0.5"></line>
+                        <line x1="24" y1="49" x2="24" y2="99" style="stroke: rgb(13, 202, 240); stroke-width: 0.5"></line>
+                        <line x1="24" y1="99" x2="74" y2="124" style="stroke: rgb(13, 202, 240); stroke-width: 0.5"></line>
+                        <line x1="74" y1="124" x2="124" y2="99" style="stroke: rgb(13, 202, 240); stroke-width: 0.5"></line>
+                        <line x1="124" y1="99" x2="124" y2="49" style="stroke: rgb(13, 202, 240); stroke-width: 0.5"></line>
+                        <line x1="124" y1="49" x2="74" y2="24" style="stroke: rgb(13, 202, 240); stroke-width: 0.5"></line>
+
                         
 
-                        <polygon id="stats-hexagon" points="{{ player_data['finishing'] }},{{ combine_data['vision'] }},{{ player_data['physicalcontact'] }},{{ player_data['defensiveawareness'] }},{{ player_data['dribbling'] }},{{ combine_data['goalkeeping'] }}" style="fill: #eee; fill-opacity: 0.5; stroke-opacity: 0.8; stroke: #dc0014;"/>
+                        <polygon id="stats-hexagon" points="{{ combine_data['longrangeshooting'] }},{{ combine_data['vision'] }},{{ combine_data['diligence'] }},{{ player_data['defensiveawareness'] }},{{ combine_data['dribblespeed'] }},{{ combine_data['goalkeeping'] }}" style="fill: #eee; fill-opacity: 0.5; stroke-opacity: 0.8; stroke: #dc0014;"/>
 
                         <text x="61" y="18" font-size="13" class="p3 yazi">SHOT</text>
                         <text x="123" y="47" font-size="13" class="p3 yazi">PASS</text>
                         <text x="123" y="112" font-size="13" class="p3 yazi">STR</text>
                         <text x="61" y="142" font-size="13" class="p3 yazi">DFN</text>
                         <text x="1" y="47" font-size="13" class="p3 yazi">DRB</text>
-                        <text x="1" y="112" font-size="13" class="p3 yazi">SPD</text>
+                        <text x="1" y="112" font-size="13" class="p3 yazi">GK</text>
                     </svg>
                 </div>
             </div>
