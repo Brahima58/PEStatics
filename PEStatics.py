@@ -270,30 +270,30 @@ def advanced_search():
         params.append('%POTW%')
         params.append('%POTM%')
 
-    elif "BigTime" in selected_package:  
+    elif selected_package == "BigTime":  
         query += " AND package LIKE %s"
         params.append('%Big Time%') 
 
-    elif "ShowTime" in selected_package: 
+    elif selected_package == "ShowTime": 
         query += " AND package LIKE %s"
         params.append('%Show Time%') 
 
-    elif "Selection" in selected_package:  
+    elif selected_package == "Selection":  
         query += " AND package LIKE %s AND package LIKE %s"
         params.append('%Selection%') 
         params.append('%Choice%') 
 
-    elif "Packs" in selected_package:  
+    elif selected_package == "Packs" :  
         query += " AND package LIKE %s"
         params.append('%Pack%') 
 
-    elif "Campaign" in selected_package:  
+    elif selected_package == "Campaign":  
         query += " AND package LIKE %s AND package LIKE %s AND package LIKE %s"
         params.append('%Campaign%') 
         params.append('%Bonus%') 
         params.append('%Daily%')
-        
-    elif "Others" in selected_package: 
+
+    elif selected_package == "Others": 
         query += """
             AND package NOT LIKE %s 
             AND package NOT LIKE %s 
