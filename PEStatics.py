@@ -260,40 +260,40 @@ def advanced_search():
         query += " AND playingstyle = %s"
         params.append(playingstyle)
     
-    selected_package = request.args.get('package', None)
+    package = request.args.get('package', None)
 
-    if selected_package == "Base":
+    if package == "Base":
         query += " AND package = 'Base'"
 
-    elif selected_package == "POTW": 
+    elif package == "POTW": 
         query += " AND package LIKE %s AND package LIKE %s"
         params.append('%POTW%')
         params.append('%POTM%')
 
-    elif selected_package == "BigTime":  
+    elif package == "BigTime":  
         query += " AND package LIKE %s"
         params.append('%Big Time%') 
 
-    elif selected_package == "ShowTime": 
+    elif package == "ShowTime": 
         query += " AND package LIKE %s"
         params.append('%Show Time%') 
 
-    elif selected_package == "Selection":  
+    elif package == "Selection":  
         query += " AND package LIKE %s AND package LIKE %s"
         params.append('%Selection%') 
         params.append('%Choice%') 
 
-    elif selected_package == "Packs" :  
+    elif package == "Packs" :  
         query += " AND package LIKE %s"
         params.append('%Pack%') 
 
-    elif selected_package == "Campaign":  
+    elif package == "Campaign":  
         query += " AND package LIKE %s AND package LIKE %s AND package LIKE %s"
         params.append('%Campaign%') 
         params.append('%Bonus%') 
         params.append('%Daily%')
 
-    elif selected_package == "Others": 
+    elif package == "Others": 
         query += """
             AND package NOT LIKE %s 
             AND package NOT LIKE %s 
