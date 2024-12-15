@@ -260,7 +260,7 @@ def advanced_search():
         query += " AND playingstyle = %s"
         params.append(playingstyle)
     
-    package = request.args.get('package', None)
+    package = request.form.get('package', None)
 
     if package == "Base":
         query += " AND package = 'Base'"
