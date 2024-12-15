@@ -297,6 +297,7 @@ def advanced_search():
     elif package == "Others": 
         query += """
             AND package NOT LIKE %s 
+            AND package NOT LIKE %s
             AND package NOT LIKE %s 
             AND package NOT LIKE %s 
             AND package NOT LIKE %s 
@@ -308,6 +309,7 @@ def advanced_search():
         """
         params.extend([
             'Base', 
+            '%POTS%', 
             '%POTW%', 
             '%POTM%', 
             '%Big Time%', 
