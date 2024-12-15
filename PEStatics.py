@@ -266,9 +266,10 @@ def advanced_search():
         query += " AND package = 'Base'"
 
     elif package == "POTW": 
-        query += " AND package LIKE %s AND package LIKE %s"
+        query += " AND package LIKE %s AND package LIKE %s AND package LIKE %s"
         params.append('%POTW%')
         params.append('%POTM%')
+        params.append('%POTS%')
 
     elif package == "BigTime":  
         query += " AND package LIKE %s"
@@ -302,9 +303,11 @@ def advanced_search():
             AND package NOT LIKE %s 
             AND package NOT LIKE %s 
             AND package NOT LIKE %s 
+            AND package NOT LIKE %s 
             AND package NOT LIKE %s
         """
         params.extend([
+            'Base', 
             '%POTW%', 
             '%POTM%', 
             '%Big Time%', 
