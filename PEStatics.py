@@ -288,12 +288,6 @@ def advanced_search():
         query += " AND package LIKE %s"
         params.append('%Pack%') 
 
-    elif package == "Campaign":  
-        query += "AND (package LIKE %s OR package LIKE %s OR package LIKE %s)"
-        params.append('%Campaign%') 
-        params.append('%Bonus%') 
-        params.append('%Daily%')
-
     elif package == "Others": 
         query += """
             AND package NOT LIKE %s 
@@ -305,7 +299,6 @@ def advanced_search():
             AND package NOT LIKE %s 
             AND package NOT LIKE %s 
             AND package NOT LIKE %s 
-            AND package NOT LIKE %s
         """
         params.extend([
             'Base', 
@@ -317,7 +310,6 @@ def advanced_search():
             '%Selection%', 
             '%Choice%', 
             '%Pack%', 
-            '%Campaign%'
         ])
  
     cosinesimilarity = request.form.get("cosinesimilarity")
@@ -381,7 +373,7 @@ def advanced_search():
             query += f" AND {column} BETWEEN %s AND %s"
             params.extend([min_val, max_val])
 
-    # Sorguyu çalıştır
+
     cursor.execute(query, params)
     results = cursor.fetchall()
 
